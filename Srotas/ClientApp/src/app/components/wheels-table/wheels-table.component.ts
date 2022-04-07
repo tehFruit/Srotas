@@ -1,3 +1,4 @@
+import { WheelsDeleteMessageComponent } from './../wheels-delete-message/wheels-delete-message.component';
 import { WheelsPopupComponent } from './../wheels-popup/wheels-popup.component';
 import { WheelsService } from './../../services/wheels.service';
 import { Component, OnInit } from '@angular/core';
@@ -81,7 +82,15 @@ export class WheelsTableComponent implements OnInit {
   }
 
   openDeleteWheelsDialog(wheels: Wheels){
-
+    const dialogRef = this.dialog.open(WheelsDeleteMessageComponent, {data: 'ratų'});
+    dialogRef.afterClosed().subscribe(response => {
+      if(response =='true'){
+        this.wheelsService.deleteWheels(wheels.id).subscribe(useless =>{
+          this.getAndRefreshData();
+          this.snackBar.open('Ratų skelbimas ištrintas', 'Gerai', {duration: 3000});
+        });
+      }
+    });
   }
 
   getAndRefreshData(){

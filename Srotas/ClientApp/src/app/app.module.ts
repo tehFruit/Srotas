@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { WheelsPopupComponent } from './components/wheels-popup/wheels-popup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WheelsDeleteMessageComponent } from './components/wheels-delete-message/wheels-delete-message.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavMenuComponent,
     HomeComponent,
     WheelsTableComponent,
-    WheelsPopupComponent
+    WheelsPopupComponent,
+    WheelsDeleteMessageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
