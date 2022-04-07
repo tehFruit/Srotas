@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Srotas", "Srotas.csproj", "{E64C08F3-7316-42DC-9BBA-7C2A1C35AEB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Srotas", "Srotas.csproj", "{490FDA1F-9979-4731-BDAC-A9418892CD5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E64C08F3-7316-42DC-9BBA-7C2A1C35AEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E64C08F3-7316-42DC-9BBA-7C2A1C35AEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E64C08F3-7316-42DC-9BBA-7C2A1C35AEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E64C08F3-7316-42DC-9BBA-7C2A1C35AEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{490FDA1F-9979-4731-BDAC-A9418892CD5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490FDA1F-9979-4731-BDAC-A9418892CD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490FDA1F-9979-4731-BDAC-A9418892CD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490FDA1F-9979-4731-BDAC-A9418892CD5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C76602FD-98E9-4427-8E80-72F10EDFB7CC}
+		SolutionGuid = {EDA42F08-07D2-4A1E-B72F-D34B977397AD}
 	EndGlobalSection
 EndGlobal
