@@ -11,15 +11,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class WheelsPopupComponent implements OnInit {
   title: string;
   form: FormGroup;
+  notCorrect: boolean;
 
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<WheelsPopupComponent>,
     @Inject(MAT_DIALOG_DATA)
       { kaina, pavadinimas, dydis, plotis, gamintojas }: Wheels ) 
   { 
     if (pavadinimas) {
-      this.title = 'Redaguoti ratus';
+      this.title = 'Redaguoti ratų skelbimą';
     } else {
-      this.title = 'Sukurti ratus';
+      this.title = 'Sukurti ratų skelbimą';
     }
     this.form = this.fb.group({
       kaina: [kaina, Validators.required],
@@ -28,6 +29,7 @@ export class WheelsPopupComponent implements OnInit {
       plotis: [plotis, Validators.required],
       gamintojas: [gamintojas, Validators.required],
     }) as FormGroup;
+    this.notCorrect = false;
   }
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class WheelsPopupComponent implements OnInit {
       this.dialogRef.close(this.form.value);
     }
     else{
-      console.log('Fuck');
+      this.notCorrect = true;
     }
   }
 
