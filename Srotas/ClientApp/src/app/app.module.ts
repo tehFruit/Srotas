@@ -16,13 +16,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { WheelsPopupComponent } from './components/wheels-popup/wheels-popup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    WheelsTableComponent
+    WheelsTableComponent,
+    WheelsPopupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatFormFieldModule,
     MatDialogModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'Ratai', component: WheelsTableComponent, pathMatch: 'full'},

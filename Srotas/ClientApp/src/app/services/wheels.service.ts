@@ -14,7 +14,7 @@ export class WheelsService {
     return this.http.get<Wheels[]>(this.baseURL);
   }
 
-  getWheels(id: string): Observable<Wheels> {
+  getWheels(id: number): Observable<Wheels> {
     return this.http.get<Wheels>(this.baseURL + `/${id}`);
   }
 
@@ -22,11 +22,11 @@ export class WheelsService {
     return this.http.post<Wheels>(this.baseURL, wheels);
   }
 
-  putWheels(id: string, wheels: Wheels): Observable<Wheels> {
+  putWheels(id: number, wheels: Wheels): Observable<Wheels> {
     return this.http.put<Wheels>(this.baseURL + `/${id}`, wheels);
   }
 
-  deleteWheels(id: string): Observable<Wheels> {
+  deleteWheels(id: number): Observable<Wheels> {
     return this.http.delete<Wheels>(this.baseURL + `/${id}`);
   }
 }

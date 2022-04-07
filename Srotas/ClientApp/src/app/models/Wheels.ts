@@ -5,5 +5,5 @@ export class Wheels {
     parduotas: boolean;
     dydis: string;
     plotis: number;
-    gamintojoas: string;
+    gamintojas: string;
 }
