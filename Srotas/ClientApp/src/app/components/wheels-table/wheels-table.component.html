@@ -1,4 +1,4 @@
-<div class="group">
+<div class="group" *ngIf="show">
     <mat-table class="groups-table mat-elevation-z8" [dataSource]="wheelsData">
   
       <ng-container matColumnDef="kaina">
@@ -65,4 +65,29 @@
     <button mat-flat-button color="primary" (click)="openCreateWheelsDialog()">
         Sukurti ratų skelbimą
     </button>
+</div>
+
+<div>
+  <div class="center">
+    <button mat-flat-button color="primary" (click)="openCreateWheelsDialog()">
+      Sukurti ratų skelbimą
+    </button>
+  </div>
+  <div class="list" *ngFor="let w of wheelsData">
+    <h2>{{w.pavadinimas}}</h2>
+    <div class="details">
+      <p>Dydis: {{w.dydis}}</p>
+      <p>Plotis: {{w.plotis}}</p>
+      <p>Gamintojas: {{w.gamintojas}}</p>
+      <p><b>Kaina: {{w.kaina}} €</b></p>
+    </div>
+    <div class="actions">
+      <button mat-icon-button (click)="openEditWheelsDialog(w)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openDeleteWheelsDialog(w)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

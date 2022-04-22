@@ -23,7 +23,7 @@ export class WheelsPopupComponent implements OnInit {
       this.title = 'Sukurti ratų skelbimą';
     }
     this.form = this.fb.group({
-      kaina: [kaina, Validators.required],
+      kaina: [kaina, Validators.pattern('^[\\d]+$')],
       pavadinimas: [pavadinimas, Validators.required],
       dydis: [dydis, Validators.required],
       plotis: [plotis, Validators.required],
