@@ -47,5 +47,4 @@ export class WheelsPopupComponent implements OnInit {
   close(){
     this.dialogRef.close();
   }
-
 }
