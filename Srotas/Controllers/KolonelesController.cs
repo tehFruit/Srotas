@@ -48,30 +48,19 @@ namespace Srotas.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutKoloneles(int id, Koloneles koloneles)
         {
-            if (id != koloneles.Id)
+            var existingSpeaker = await _context.Koloneles.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingSpeaker != null)
             {
-                return BadRequest();
-            }
+                existingSpeaker.Kaina = koloneles.Kaina;
+                existingSpeaker.Pavadinimas = koloneles.Pavadinimas;
+                existingSpeaker.Parduotas = koloneles.Parduotas;
+                existingSpeaker.Gamintojas = koloneles.Gamintojas;
+                existingSpeaker.Skersmuo = koloneles.Skersmuo;
 
-            _context.Entry(koloneles).State = EntityState.Modified;
-
-            try
-            {
                 await _context.SaveChangesAsync();
+                return Ok(existingSpeaker);
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!KolonelesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return NotFound("Speaker not found");
         }
 
         // POST: api/Koloneles

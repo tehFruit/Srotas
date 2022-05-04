@@ -46,32 +46,22 @@ namespace Srotas.Controllers
         // PUT: api/Variklis/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutVariklis(int id, Variklis variklis)
+        public async Task<IActionResult> UpdateVariklis(int id, [FromBody] Variklis variklis)
         {
-            if (id != variklis.Id)
+            var existingEngine = await _context.Variklis.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingEngine != null)
             {
-                return BadRequest();
-            }
+                existingEngine.Kaina = variklis.Kaina;
+                existingEngine.Pavadinimas = variklis.Pavadinimas;
+                existingEngine.Parduotas = variklis.Parduotas;
+                existingEngine.Gamintojas = variklis.Gamintojas;
+                existingEngine.Turis = variklis.Turis;
+                existingEngine.KuroTipas = variklis.KuroTipas;
 
-            _context.Entry(variklis).State = EntityState.Modified;
-
-            try
-            {
                 await _context.SaveChangesAsync();
+                return Ok(existingEngine);
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VariklisExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return NotFound("Wheels not found");
         }
 
         // POST: api/Variklis
