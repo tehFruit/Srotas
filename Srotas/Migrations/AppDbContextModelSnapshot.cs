@@ -16,10 +16,40 @@ namespace Srotas.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Srotas.Models.Koloneles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Gamintojas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Kaina")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("Parduotas")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Pavadinimas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Skersmuo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Koloneles");
+                });
 
             modelBuilder.Entity("Srotas.Models.Ratai", b =>
                 {
@@ -53,6 +83,40 @@ namespace Srotas.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ratai");
+                });
+
+            modelBuilder.Entity("Srotas.Models.Variklis", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Gamintojas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Kaina")
+                        .HasColumnType("float");
+
+                    b.Property<string>("KuroTipas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Parduotas")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Pavadinimas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Turis")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Variklis");
                 });
 #pragma warning restore 612, 618
         }
