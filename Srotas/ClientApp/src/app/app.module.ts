@@ -22,6 +22,12 @@ import { WheelsDeleteMessageComponent } from './components/wheels-delete-message
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import { EngineTableComponent } from './components/engine/engine-table/engine-table.component';
+import { EngineDeleteMessageComponent } from './components/engine/engine-delete-message/engine-delete-message.component';
+import { EnginePopupComponent } from './components/engine/engine-popup/engine-popup.component';
+import { SpeakersTableComponent } from './components/speakers/speakers-table/speakers-table.component';
+import { SpeakersPopupComponent } from './components/speakers/speakers-popup/speakers-popup.component';
+import { SpeakersDeleteMessageComponent } from './components/speakers/speakers-delete-message/speakers-delete-message.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,13 @@ import {MatInputModule} from '@angular/material/input';
     HomeComponent,
     WheelsTableComponent,
     WheelsPopupComponent,
-    WheelsDeleteMessageComponent
+    WheelsDeleteMessageComponent,
+    EngineTableComponent,
+    EngineDeleteMessageComponent,
+    EnginePopupComponent,
+    SpeakersTableComponent,
+    SpeakersPopupComponent,
+    SpeakersDeleteMessageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,7 +60,8 @@ import {MatInputModule} from '@angular/material/input';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'Ratai', component: WheelsTableComponent, pathMatch: 'full'},
-      
+      { path: 'Varikliai', component: EngineTableComponent, pathMatch: 'full' },
+      { path: 'Koloneles', component: SpeakersTableComponent, pathMatch: 'full' },
     ]),
     BrowserAnimationsModule
   ],

@@ -1,0 +1,101 @@
+<div class="group" *ngIf="show">
+  <mat-table class="groups-table mat-elevation-z8" [dataSource]="engineData">
+
+    <ng-container matColumnDef="kaina">
+      <mat-header-cell *matHeaderCellDef>Kaina</mat-header-cell>
+
+      <mat-cell class="name-cell" *matCellDef="let engine">
+        {{
+          engine.kaina
+        }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pavadinimas">
+      <mat-header-cell *matHeaderCellDef>Pavadinimas</mat-header-cell>
+
+      <mat-cell class="description-cell" *matCellDef="let engine">
+        {{
+          engine.pavadinimas
+        }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gamintojas">
+      <mat-header-cell *matHeaderCellDef>Gamintojas</mat-header-cell>
+
+      <mat-cell class="description-cell" *matCellDef="let engine">
+        {{
+          engine.gamintojas
+        }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="turis">
+      <mat-header-cell *matHeaderCellDef>Tūris</mat-header-cell>
+
+      <mat-cell class="description-cell" *matCellDef="let engine">
+        {{
+          engine.turis
+        }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="kuroTipas">
+      <mat-header-cell *matHeaderCellDef>Kuro tipas</mat-header-cell>
+
+      <mat-cell class="description-cell" *matCellDef="let engine">
+        {{
+          engine.kuroTipas
+        }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="veiksmai">
+      <mat-header-cell *matHeaderCellDef>Veiksmai</mat-header-cell>
+
+      <mat-cell class="actions-cell" *matCellDef="let engine">
+        <button mat-icon-button (click)="openEditEngineDialog(engine)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openDeleteEngineDialog(engine)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <br />
+  <button mat-flat-button color="primary" (click)="openCreateEngineDialog()">
+    Sukurti variklio skelbimą
+  </button>
+</div>
+
+<div>
+  <div class="center">
+    <button mat-flat-button color="primary" (click)="openCreateEngineDialog()">
+      Sukurti variklio skelbimą
+    </button>
+  </div>
+  <div class="list" *ngFor="let w of engineData">
+    <h2>{{w.pavadinimas}}</h2>
+    <div class="details">
+      <p>Dydis: {{w.turis}}</p>
+      <p>Plotis: {{w.kuroTipas}}</p>
+      <p>Gamintojas: {{w.gamintojas}}</p>
+      <p><b>Kaina: {{w.kaina}} €</b></p>
+    </div>
+    <div class="actions">
+      <button mat-icon-button (click)="openEditEngineDialog(w)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openDeleteEngineDialog(w)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

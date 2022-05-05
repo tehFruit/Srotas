@@ -11,5 +11,9 @@ namespace Srotas.Data
         }
 
         public DbSet<Ratai> Ratai { get; set; }
+
+        public DbSet<Variklis> Variklis { get; set; }
+
+        public DbSet<Koloneles> Koloneles { get; set; }
     }
 }
