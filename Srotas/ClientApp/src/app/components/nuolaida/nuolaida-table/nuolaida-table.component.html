@@ -1,0 +1,73 @@
+<div class="group" *ngIf="show">
+    <mat-table class="groups-table mat-elevation-z8" [dataSource]="nuolaidaData">
+
+        <ng-container matColumnDef="procentai">
+            <mat-header-cell *matHeaderCellDef>Procentai</mat-header-cell>
+
+            <mat-cell class="name-cell" *matCellDef="let nuolaida">
+                {{ nuolaida.procentai }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="kodas">
+            <mat-header-cell *matHeaderCellDef>Kodas</mat-header-cell>
+
+            <mat-cell class="description-cell" *matCellDef="let nuolaida">
+                {{ nuolaida.kodas }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="arPanaudota">
+            <mat-header-cell *matHeaderCellDef>Ar panaudota?</mat-header-cell>
+
+            <mat-cell class="description-cell" *matCellDef="let nuolaida">
+                {{ nuolaida.arPanaudota }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="veiksmai">
+            <mat-header-cell *matHeaderCellDef>Veiksmai</mat-header-cell>
+
+            <mat-cell class="actions-cell" *matCellDef="let nuolaida">
+                <button mat-icon-button (click)="openEditNuolaidaDialog(nuolaida)">
+          <mat-icon>edit</mat-icon>
+        </button>
+                <button mat-icon-button (click)="openDeleteNuolaidaDialog(nuolaida)">
+          <mat-icon>delete</mat-icon>
+        </button>
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <br />
+    <button mat-flat-button color="primary" (click)="openCreateNuolaidaDialog()">
+    Sukurti nuolaidą
+  </button>
+</div>
+
+<div>
+    <div class="center">
+        <button mat-flat-button color="primary" (click)="openCreateNuolaidaDialog()">
+      Sukurti nuolaidą
+    </button>
+    </div>
+    <div class="list" *ngFor="let w of nuolaidaData">
+        <h2>Nuolaida: {{w.id}}</h2>
+        <div class="details">
+            <p>Procentai: {{w.procentai}}</p>
+            <p>Kodas: {{w.kodas}}</p>
+        </div>
+        <div class="actions">
+            <button mat-icon-button (click)="openEditNuolaidaDialog(w)">
+        <mat-icon>edit</mat-icon>
+      </button>
+            <button mat-icon-button (click)="openDeleteNuolaidaDialog(w)">
+        <mat-icon>delete</mat-icon>
+      </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="group" *ngIf="show">
+    <mat-table class="groups-table mat-elevation-z8" [dataSource]="pavaruDezeData">
+
+        <ng-container matColumnDef="kaina">
+            <mat-header-cell *matHeaderCellDef>Kaina</mat-header-cell>
+
+            <mat-cell class="name-cell" *matCellDef="let pavaruDeze">
+                {{ pavaruDeze.kaina }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="pavadinimas">
+            <mat-header-cell *matHeaderCellDef>Pavadinimas</mat-header-cell>
+
+            <mat-cell class="description-cell" *matCellDef="let pavaruDeze">
+                {{ pavaruDeze.pavadinimas }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="gamintojas">
+            <mat-header-cell *matHeaderCellDef>Gamintojas</mat-header-cell>
+
+            <mat-cell class="description-cell" *matCellDef="let pavaruDeze">
+                {{ pavaruDeze.gamintojas }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="tipas">
+            <mat-header-cell *matHeaderCellDef>Tipas</mat-header-cell>
+
+            <mat-cell class="description-cell" *matCellDef="let pavaruDeze">
+                {{ pavaruDeze.tipas }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="veiksmai">
+            <mat-header-cell *matHeaderCellDef>Veiksmai</mat-header-cell>
+
+            <mat-cell class="actions-cell" *matCellDef="let pavaruDeze">
+                <button mat-icon-button (click)="openEditPavaruDezeDialog(pavaruDeze)">
+          <mat-icon>edit</mat-icon>
+        </button>
+                <button mat-icon-button (click)="openDeletePavaruDezeDialog(pavaruDeze)">
+          <mat-icon>delete</mat-icon>
+        </button>
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <br />
+    <button mat-flat-button color="primary" (click)="openCreatePavaruDezeDialog()">
+    Sukurti pavarų dėžės skelbimą
+  </button>
+</div>
+
+<div>
+    <div class="center">
+        <button mat-flat-button color="primary" (click)="openCreatePavaruDezeDialog()">
+      Sukurti pavarų dėžės skelbimą
+    </button>
+    </div>
+    <div class="list" *ngFor="let w of pavaruDezeData">
+        <h2>{{w.pavadinimas}}</h2>
+        <div class="details">
+            <p><b>Kaina: {{w.kaina}} €</b></p>
+            <p>Gamintojas: {{w.gamintojas}}</p>
+            <p>Tipas: {{w.tipas}}</p>
+        </div>
+        <div class="actions">
+            <button mat-icon-button (click)="openEditPavaruDezeDialog(w)">
+        <mat-icon>edit</mat-icon>
+      </button>
+            <button mat-icon-button (click)="openDeletePavaruDezeDialog(w)">
+        <mat-icon>delete</mat-icon>
+      </button>
+        </div>
+    </div>
+</div>

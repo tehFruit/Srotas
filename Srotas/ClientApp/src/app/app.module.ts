@@ -10,6 +10,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WheelsTableComponent } from './components/wheels-table/wheels-table.component';
+import {MatSelectModule} from '@angular/material/select';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
@@ -28,7 +29,12 @@ import { EnginePopupComponent } from './components/engine/engine-popup/engine-po
 import { SpeakersTableComponent } from './components/speakers/speakers-table/speakers-table.component';
 import { SpeakersPopupComponent } from './components/speakers/speakers-popup/speakers-popup.component';
 import { SpeakersDeleteMessageComponent } from './components/speakers/speakers-delete-message/speakers-delete-message.component';
-
+import { NuolaidaTableComponent } from './components/nuolaida/nuolaida-table/nuolaida-table.component';
+import { NuolaidaDeleteMessageComponent } from './components/nuolaida/nuolaida-delete-message/nuolaida-delete-message.component';
+import { NuolaidaPopupComponent } from './components/nuolaida/nuolaida-popup/nuolaida-popup.component';
+import { PavaruDezeTableComponent } from './components/pavaruDeze/pavaruDeze-table/pavaruDeze-table.component';
+import { PavaruDezeDeleteMessageComponent } from './components/pavaruDeze/pavaruDeze-delete-message/pavaruDeze-delete-message.component';
+import { PavaruDezePopupComponent } from './components/pavaruDeze/pavaruDeze-popup/pavaruDeze-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +48,13 @@ import { SpeakersDeleteMessageComponent } from './components/speakers/speakers-d
     EnginePopupComponent,
     SpeakersTableComponent,
     SpeakersPopupComponent,
-    SpeakersDeleteMessageComponent
+    SpeakersDeleteMessageComponent,
+    NuolaidaTableComponent,
+    NuolaidaDeleteMessageComponent,
+    NuolaidaPopupComponent,
+    PavaruDezeTableComponent,
+    PavaruDezeDeleteMessageComponent,
+    PavaruDezePopupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -57,11 +69,14 @@ import { SpeakersDeleteMessageComponent } from './components/speakers/speakers-d
     ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
+    MatSelectModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'Ratai', component: WheelsTableComponent, pathMatch: 'full'},
       { path: 'Varikliai', component: EngineTableComponent, pathMatch: 'full' },
       { path: 'Koloneles', component: SpeakersTableComponent, pathMatch: 'full' },
+      { path: 'Nuolaidos', component: NuolaidaTableComponent, pathMatch: 'full' },
+      { path: 'PavaruDezes', component: PavaruDezeTableComponent, pathMatch: 'full' },
     ]),
     BrowserAnimationsModule
   ],

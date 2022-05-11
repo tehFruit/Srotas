@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <label>Procentai</label>
+        <input placeholder="Procentai" formControlName="procentai" />
+    </mat-form-field>
+    <br />
+
+    <mat-form-field appearance="fill">
+        <label>Kodas</label>
+        <input placeholder="Kodas" formControlName="kodas" />
+    </mat-form-field>
+    <br />
+
+    <p style="color:red;" *ngIf="notCorrect">Neteisingi duomenys!</p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
