@@ -19,15 +19,16 @@
     </mat-form-field>
     <br />
 
-    <mat-form-field appearance="">
-        <mat-label>Select an option</mat-label>
-        <mat-select required formControlName="tipas">
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2">Option 2</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br />
+    <p>
+      <mat-form-field appearance="fill">
+        <p><label>Pasirinkite pavarų dėžės tipą</label></p>
+        <select required formControlName="tipas">
+          <option value="Automatinė">Automatinė</option>
+          <option value="Mechaninė">Mechaninė</option>
+        </select>
+      </mat-form-field>
+    </p>
+    
 
     <p style="color:red;" *ngIf="notCorrect">Neteisingi duomenys!</p>
 
