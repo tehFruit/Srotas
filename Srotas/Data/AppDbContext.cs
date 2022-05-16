@@ -11,13 +11,11 @@ namespace Srotas.Data
         }
 
         public DbSet<Ratai> Ratai { get; set; }
-
         public DbSet<Variklis> Variklis { get; set; }
-
         public DbSet<Koloneles> Koloneles { get; set; }
-
         public DbSet<Nuolaida> Nuolaida { get; set; }
-
         public DbSet<PavaruDeze> PavaruDeze { get; set; }
+        public DbSet<Kapotas> Kapotas { get; set; }
+        public DbSet<Durys> Durys { get; set; }
     }
 }

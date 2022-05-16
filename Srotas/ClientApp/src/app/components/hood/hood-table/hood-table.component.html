@@ -1,0 +1,25 @@
+<div>
+  <div class="center">
+    <button mat-flat-button color="primary" (click)="openCreateHoodDialog()">
+      Sukurti kapoto skelbimą
+    </button>
+  </div>
+  <div class="list" *ngFor="let w of hoodData">
+    <h2>{{w.pavadinimas}}</h2>
+    <div class="details">
+      <p>Modelis: {{w.modelis}}</p>
+      <p>Pagaminimo metai: {{w.pagaminimoMetai}}</p>
+      <p>Gamintojas: {{w.gamintojas}}</p>
+      <p>Spalva: {{w.spalva}}</p>
+      <p><b>Kaina: {{w.kaina}} €</b></p>
+    </div>
+    <div class="actions">
+      <button mat-icon-button (click)="openEditHoodDialog(w)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openDeleteHoodDialog(w)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

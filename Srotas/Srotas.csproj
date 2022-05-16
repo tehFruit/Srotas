@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\components\hood\hood-delete-message\" />
     <Folder Include="Data\" />
   </ItemGroup>
 

@@ -35,6 +35,12 @@ import { NuolaidaPopupComponent } from './components/nuolaida/nuolaida-popup/nuo
 import { PavaruDezeTableComponent } from './components/pavaruDeze/pavaruDeze-table/pavaruDeze-table.component';
 import { PavaruDezeDeleteMessageComponent } from './components/pavaruDeze/pavaruDeze-delete-message/pavaruDeze-delete-message.component';
 import { PavaruDezePopupComponent } from './components/pavaruDeze/pavaruDeze-popup/pavaruDeze-popup.component';
+import { HoodDeleteMessageComponent } from './components/hood/hood-delete-message/hood-delete-message.component';
+import { HoodTableComponent } from './components/hood/hood-table/hood-table.component';
+import { HoodPopupComponent } from './components/hood/hood-popup/hood-popup.component';
+import { DoorDeleteMessageComponent } from './components/door/door-delete-message/door-delete-message.component';
+import { DoorTableComponent } from './components/door/door-table/door-table.component';
+import { DoorPopupComponent } from './components/door/door-popup/door-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +60,13 @@ import { PavaruDezePopupComponent } from './components/pavaruDeze/pavaruDeze-pop
     NuolaidaPopupComponent,
     PavaruDezeTableComponent,
     PavaruDezeDeleteMessageComponent,
-    PavaruDezePopupComponent
+    PavaruDezePopupComponent,
+    HoodDeleteMessageComponent,
+    HoodTableComponent,
+    HoodPopupComponent,
+    DoorDeleteMessageComponent,
+    DoorTableComponent,
+    DoorPopupComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -77,6 +89,8 @@ import { PavaruDezePopupComponent } from './components/pavaruDeze/pavaruDeze-pop
       { path: 'Koloneles', component: SpeakersTableComponent, pathMatch: 'full' },
       { path: 'Nuolaidos', component: NuolaidaTableComponent, pathMatch: 'full' },
       { path: 'PavaruDezes', component: PavaruDezeTableComponent, pathMatch: 'full' },
+      { path: 'Hood', component: HoodTableComponent, pathMatch: 'full' },
+      { path: 'Door', component: DoorTableComponent, pathMatch: 'full' },
     ]),
     BrowserAnimationsModule
   ],
