@@ -89,8 +89,8 @@ import { DoorPopupComponent } from './components/door/door-popup/door-popup.comp
       { path: 'Koloneles', component: SpeakersTableComponent, pathMatch: 'full' },
       { path: 'Nuolaidos', component: NuolaidaTableComponent, pathMatch: 'full' },
       { path: 'PavaruDezes', component: PavaruDezeTableComponent, pathMatch: 'full' },
-      { path: 'Hood', component: HoodTableComponent, pathMatch: 'full' },
-      { path: 'Door', component: DoorTableComponent, pathMatch: 'full' },
+      { path: 'Kapotai', component: HoodTableComponent, pathMatch: 'full' },
+      { path: 'Durys', component: DoorTableComponent, pathMatch: 'full' },
     ]),
     BrowserAnimationsModule
   ],

@@ -7,7 +7,7 @@ import { Hood } from '../models/Hood';
   providedIn: 'root'
 })
 export class HoodsService {
-  readonly baseURL = 'https://localhost:7201/api/Variklis';
+  readonly baseURL = 'https://localhost:7201/api/Kapotas';
   constructor(private http: HttpClient) { }
 
   getAllHoods(): Observable<Hood[]> {

@@ -27,7 +27,7 @@ export class DoorPopupComponent implements OnInit {
       pavadinimas: [pavadinimas, Validators.required],
       gamintojas: [gamintojas, Validators.required],
       modelis: [modelis, Validators.required],
-      pagaminimoMetai: [pagaminimoMetai, Validators.required],
+      pagaminimoMetai: [pagaminimoMetai, Validators.pattern('^[\\d]+$')],
       spalva: [spalva, Validators.required],
     }) as FormGroup;
     this.notCorrect = false;

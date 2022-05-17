@@ -7,7 +7,7 @@ import { Door } from '../models/Door';
   providedIn: 'root'
 })
 export class DoorsService {
-  readonly baseURL = 'https://localhost:7201/api/Variklis';
+  readonly baseURL = 'https://localhost:7201/api/Durys';
   constructor(private http: HttpClient) { }
 
   getAllDoors(): Observable<Door[]> {

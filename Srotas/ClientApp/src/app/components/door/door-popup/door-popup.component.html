@@ -1,47 +1,47 @@
 <h2 mat-dialog-title>{{ title }}</h2>
 
 <mat-dialog-content [formGroup]="form">
-  <mat-form-field appearance="fill">
-    <label>Kaina</label>
-    <input placeholder="Kaina" formControlName="kaina" />
-  </mat-form-field>
-  <br />
+    <mat-form-field appearance="fill">
+        <label>Kaina</label>
+        <input placeholder="Kaina" formControlName="kaina" />
+    </mat-form-field>
+    <br />
 
-  <mat-form-field appearance="fill">
-    <label>Pavadinimas</label>
-    <input placeholder="Pavadinimas" formControlName="pavadinimas" />
-  </mat-form-field>
-  <br />
+    <mat-form-field appearance="fill">
+        <label>Pavadinimas</label>
+        <input placeholder="Pavadinimas" formControlName="pavadinimas" />
+    </mat-form-field>
+    <br />
 
-  <mat-form-field appearance="fill">
-    <label>Gamintojas</label>
-    <input placeholder="Gamintojas" formControlName="gamintojas" />
-  </mat-form-field>
-  <br />
+    <mat-form-field appearance="fill">
+        <label>Gamintojas</label>
+        <input placeholder="Gamintojas" formControlName="gamintojas" />
+    </mat-form-field>
+    <br />
 
-  <mat-form-field appearance="fill">
-    <label>Modelis</label>
-    <input placeholder="Modelis" formControlName="turis" />
-  </mat-form-field>
-  <br />
+    <mat-form-field appearance="fill">
+        <label>Modelis</label>
+        <input placeholder="Modelis" formControlName="modelis" />
+    </mat-form-field>
+    <br />
 
-  <mat-form-field appearance="fill">
-    <label>Pagaminimo metai</label>
-    <input placeholder="Pagaminimo metai" formControlName="pagaminimoMetai" />
-  </mat-form-field>
-  <br />
+    <mat-form-field appearance="fill">
+        <label>Pagaminimo metai</label>
+        <input placeholder="Pagaminimo metai" formControlName="pagaminimoMetai" />
+    </mat-form-field>
+    <br />
 
-  <mat-form-field appearance="fill">
-    <label>Spalva</label>
-    <input placeholder="Spalva" formControlName="spalva" />
-  </mat-form-field>
-  <br />
+    <mat-form-field appearance="fill">
+        <label>Spalva</label>
+        <input placeholder="Spalva" formControlName="spalva" />
+    </mat-form-field>
+    <br />
 
-  <p style="color:red;" *ngIf="notCorrect">Neteisingi duomenys!</p>
+    <p style="color:red;" *ngIf="notCorrect">Neteisingi duomenys!</p>
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-raised-button (click)="close()">Close</button>
-  <button mat-raised-button color="primary" (click)="save()">Save</button>
+    <button mat-raised-button (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
 </mat-dialog-actions>
