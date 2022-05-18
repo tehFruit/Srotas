@@ -17,5 +17,6 @@ namespace Srotas.Data
         public DbSet<PavaruDeze> PavaruDeze { get; set; }
         public DbSet<Kapotas> Kapotas { get; set; }
         public DbSet<Durys> Durys { get; set; }
+        public DbSet<AutomobilioSkelbimas> AutomobilioSkelbimas { get; set; }
     }
 }
