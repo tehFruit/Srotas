@@ -1,0 +1,25 @@
+<div>
+    <div class="center">
+      <button mat-flat-button color="primary" (click)="openCreateCarDialog()">
+        Sukurti automobilio skelbimą
+      </button>
+    </div>
+    <div class="list" *ngFor="let w of carData">
+      <h2>{{w.gamintojas}} {{w.modelis}}</h2>
+      <div class="details">
+        <p>Rida: {{w.rida}}</p>
+        <p>Metai: {{w.pagaminimoMetai}}</p>
+        <p>Kuro tipas: {{w.kuroTipas}}</p>
+        <p>Spalva: {{w.spalva}}</p>
+        <p><b>Kaina: {{w.kaina}} €</b></p>
+      </div>
+      <div class="actions">
+        <button mat-icon-button (click)="openEditCarDialog(w)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openDeleteCarDialog(w)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>

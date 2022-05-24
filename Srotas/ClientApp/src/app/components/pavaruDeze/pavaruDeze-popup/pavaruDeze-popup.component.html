@@ -1,35 +1,25 @@
 <h2 mat-dialog-title>{{ title }}</h2>
 
 <mat-dialog-content [formGroup]="form">
-    <mat-form-field appearance="fill">
-        <label>Kaina</label>
+        
+        <label>Kaina</label><br />
         <input placeholder="Kaina" formControlName="kaina" />
-    </mat-form-field>
-    <br />
+        <br /><br />
 
-    <mat-form-field appearance="fill">
-        <label>Pavadinimas</label>
+        <label>Pavadinimas</label><br />
         <input placeholder="Pavadinimas" formControlName="pavadinimas" />
-    </mat-form-field>
-    <br />
+        <br /><br />
 
-    <mat-form-field appearance="fill">
-        <label>Gamintojas</label>
+        <label>Gamintojas</label><br />
         <input placeholder="Gamintojas" formControlName="gamintojas" />
-    </mat-form-field>
-    <br />
+        <br /><br />
 
-    <p>
-      <mat-form-field appearance="fill">
-        <p><label>Pasirinkite pavarų dėžės tipą</label></p>
+        <label>Pasirinkite pavarų dėžės tipą</label><br />
         <select required formControlName="tipas">
           <option value="Automatinė">Automatinė</option>
           <option value="Mechaninė">Mechaninė</option>
         </select>
-      </mat-form-field>
-    </p>
     
-
     <p style="color:red;" *ngIf="notCorrect">Neteisingi duomenys!</p>
 
 </mat-dialog-content>

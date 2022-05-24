@@ -14,15 +14,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class WheelsTableComponent implements OnInit {
   wheels: Wheels;
   wheelsData: Wheels[];
-  show: boolean = false;
-  displayedColumns =[
-    'kaina',
-    'pavadinimas',
-    'dydis',
-    'plotis',
-    'gamintojas',
-    'veiksmai'
-  ];
 
   constructor(private wheelsService: WheelsService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 

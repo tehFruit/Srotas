@@ -1,0 +1,75 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<mat-dialog-content >
+  <form [formGroup]="form">
+
+  
+    <label>Gamintojas</label><br/>
+    <input placeholder="Gamintojas" formControlName="gamintojas"/>
+    <br/><br/>
+
+    <label>Modelis</label><br/>
+    <input placeholder="Modelis" formControlName="modelis"/>
+    <br/><br/>
+
+    <label>Rida</label><br/>
+    <input placeholder="Rida" formControlName="rida"/>
+    <br/><br/>
+
+    <label>Pagaminimo metai</label><br/>
+    <input placeholder="Pagaminimo metai" formControlName="pagaminimoMetai"/>
+    <br/><br/>
+
+    <label>Pavaru dėžės tipas</label><br/>
+    <input placeholder="Pavaru dėžės tipas" formControlName="pavaruDezesTipas"/>
+    <br/><br/>
+
+    <label>Kuro tipas</label><br/>
+    <input placeholder="Kuro tipas" formControlName="kuroTipas"/>
+    <br/><br/>
+
+    <label>Spalva</label><br/>
+    <input placeholder="Spalva" formControlName="spalva"/>
+    <br/><br/>
+
+    <label>Kaina</label><br/>
+    <input placeholder="Kaina" formControlName="kaina"/>
+    <br/><br/>
+
+    <mat-slide-toggle formControlName="turiRatus">Turi ratus?</mat-slide-toggle><br/>
+  
+    <label>Ratų dydis</label><br/>
+    <input placeholder="Ratų dydis" formControlName="ratuDydis"/>
+    <br/><br/>
+
+    <label>Ratų plotis</label><br/>
+    <input placeholder="Ratų plotis" formControlName="ratuPlotis"/>
+    <br/><br/>
+
+    <mat-slide-toggle formControlName="turiVarikli">Turi variklį?</mat-slide-toggle><br/>
+  
+    <label>Variklio tūris</label><br/>
+    <input placeholder="Variklio tūris" formControlName="variklioTuris"/>
+    <br/><br/>
+
+    <mat-slide-toggle formControlName="turiPavaruDeze">Turi pavarų dėžę?</mat-slide-toggle><br/>
+
+    <mat-slide-toggle formControlName="turiKoloneles">Turi kolonėles?</mat-slide-toggle><br/>
+
+    <label>Kolonėlių skersmuo</label><br/>
+    <input placeholder="Kolonėlių skersmuo" formControlName="koloneliuSkersmuo"/>
+    <br/><br/>
+
+    <mat-slide-toggle formControlName="turiKapota">Turi kapotą?</mat-slide-toggle><br/>
+
+    <mat-slide-toggle formControlName="turiDuris">Turi duris?</mat-slide-toggle><br/>
+
+    <p style="color:red;" *ngIf="notCorrect" >Neteisingi duomenys!</p>
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
