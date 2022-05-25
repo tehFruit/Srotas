@@ -9,5 +9,8 @@ namespace Srotas.Models
         public double Procentai { get; set; }
         public string Kodas { get; set; }
         public bool ArPanaudota { get; set; }
+
+        public int PardavejasId { get; set; }
+        public Pardavejas Pardavejas { get; set; }
     }
 }
