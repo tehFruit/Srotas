@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  readonly userType = 'Seller'; //Seller or Buyer
+  readonly userType = 'Buyer'; //Seller or Buyer
   readonly baseUrl = 'https://localhost:7201/api/User';
   constructor(private http: HttpClient) { }
 

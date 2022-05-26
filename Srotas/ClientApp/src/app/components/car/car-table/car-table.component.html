@@ -10,7 +10,7 @@
         Rekomendacijos
       </button>
     </div>
-    <div class="list" *ngFor="let w of carData">
+    <div class="list" *ngFor="let w of carData; let i = index;">
       <h2>{{w.gamintojas}} {{w.modelis}}</h2>
       <div class="details">
         <p>Rida: {{w.rida}}</p>
@@ -22,28 +22,39 @@
 
       <ng-container *ngIf="suggestions">
         <p>Dalių pasiūlymai</p>
-      <div class="wheels">
-        <p>Wheels</p>
+      <div class="part" *ngIf="!w.turiRatus">
+        <p><b>Ratai</b></p>
+        <p>{{wheels[i].suggestedWheels.pavadinimas}}</p>
+        <p>Dydis: {{wheels[i].suggestedWheels.dydis}}</p>
+        <p>Plotis: {{wheels[i].suggestedWheels.plotis}}</p>
       </div>
 
-      <div class="engine">
-        <p>Engine</p>
+      <div class="part" *ngIf="!w.turiVarikli">
+        <p><b>Variklis</b></p>
+        <p>{{engines[i].suggestedEngine.pavadinimas}}</p>
+        <p>Tūris: {{engines[i].suggestedEngine.turis}}</p>
+        <p>Kuro tipas: {{engines[i].suggestedEngine.kuroTipas}}</p>
       </div>
 
-      <div class="gearbox">
-        <p>Gearbox</p>
+      <div class="part" *ngIf="!w.turiPavaruDeze">
+        <p><b>Pavarų dėžė</b></p>
+        <p>{{gearboxes[i].suggestedGearbox.pavadinimas}}</p>
+        <p>Tipas: {{gearboxes[i].suggestedGearbox.tipas}}</p>
       </div>
 
-      <div class="speakers">
-        <p>Speakers</p>
+      <div class="part" *ngIf="!w.turiKoloneles">
+        <p><b>Kolonėlės</b></p>
+        <p>{{speakers[i].suggestedSpeakers.pavadinimas}}</p>
       </div>
 
-      <div class="hood">
-        <p>Hood</p>
+      <div class="part" *ngIf="!w.turiKapota">
+        <p><b>Kapotas</b></p>
+        <p>{{hoods[i].suggestedHood.pavadinimas}}</p>
       </div>
 
-      <div class="doors">
-        <p>Doors</p>
+      <div class="part" *ngIf="!w.turiDuris">
+        <p><b>Durys</b></p>
+        <p>{{doors[i].suggestedDoors.pavadinimas}}</p>
       </div>
       </ng-container>
       

@@ -87,7 +87,7 @@ export class CarTableComponent implements OnInit {
 
       //Hoods
       this.hoodService.getSpecHood(this.carData[i].gamintojas, this.carData[i].modelis, this.carData[i].pagaminimoMetai, this.carData[i].spalva).subscribe(h => {
-        this.hoods.push({carIndex: i, suggestedHoods: h});
+        this.hoods.push({carIndex: i, suggestedHood: h});
       });
 
       //Doors
@@ -114,8 +114,6 @@ export class CarTableComponent implements OnInit {
   getCars(){
     this.carService.getAllCars().subscribe(cars => {
       this.carData = cars;
-      this.getSuggestions();/////
-      console.log(this.doors);/////
     });
   }
 
