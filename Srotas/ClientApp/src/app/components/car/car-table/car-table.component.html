@@ -1,5 +1,6 @@
 <div>
-    <div class="center">
+    <h1 style="text-align: center;">Automobiliu skelbimai</h1>
+    <div class="center" *ngIf="currentUser == 'Seller'">
       <button mat-flat-button color="primary" (click)="openCreateCarDialog()">
         Sukurti automobilio skelbimą
       </button>
@@ -13,12 +14,17 @@
         <p>Spalva: {{w.spalva}}</p>
         <p><b>Kaina: {{w.kaina}} €</b></p>
       </div>
-      <div class="actions">
+      <div class="actions" *ngIf="currentUser == 'Seller'">
         <button mat-icon-button (click)="openEditCarDialog(w)">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button (click)="openDeleteCarDialog(w)">
           <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <div class="actions" *ngIf="currentUser == 'Buyer'">
+        <button mat-icon-button>
+          <mat-icon>shopping_cart</mat-icon>
         </button>
       </div>
     </div>

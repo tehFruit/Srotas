@@ -5,6 +5,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CarPopupComponent } from '../car-popup/car-popup.component';
 import { CarDeleteMessageComponent } from '../car-delete-message/car-delete-message.component';
+import { UserService } from 'src/app/services/user.service';
+import { Buyer } from 'src/app/models/Buyer';
+import { Seller } from 'src/app/models/Seller';
 
 @Component({
   selector: 'app-car-table',
@@ -14,11 +17,30 @@ import { CarDeleteMessageComponent } from '../car-delete-message/car-delete-mess
 export class CarTableComponent implements OnInit {
   car: Car;
   carData: Car[];
+
+  currentUser: string;
+  buyer: Buyer;
+  seller: Seller;
   
-  constructor(private carService: CarsService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private carService: CarsService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService) { }
 
   ngOnInit(): void {
     this.getCars();
+    this.getUser();
+  }
+
+  getUser(){
+    this.currentUser = this.userService.getUserType();
+    if(this.currentUser == 'Buyer'){
+      this.userService.getBuyer().subscribe(b => {
+        this.buyer = b;
+      });
+    }
+    else{
+      this.userService.getSeller().subscribe(s => {
+        this.seller = s;
+      });
+    }
   }
 
   getCars(){
