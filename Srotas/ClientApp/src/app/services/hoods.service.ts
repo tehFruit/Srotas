@@ -29,4 +29,8 @@ export class HoodsService {
   deleteHood(id: number): Observable<Hood> {
     return this.http.delete<Hood>(this.baseURL + `/${id}`);
   }
+
+  getSpecHood(gamintojas: string, modelis: string, metai: number, spalva: string) : Observable<Hood>{
+    return this.http.get<Hood>(this.baseURL + '/GetSpecific' + `/${gamintojas}` + `/${modelis}` + `/${metai}` + `/${spalva}`);
+  }
 }

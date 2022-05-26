@@ -29,4 +29,8 @@ export class DoorsService {
   deleteDoor(id: number): Observable<Door> {
     return this.http.delete<Door>(this.baseURL + `/${id}`);
   }
+
+  getSpecDoor(gamintojas: string, modelis: string, metai: number, spalva: string) : Observable<Door>{
+    return this.http.get<Door>(this.baseURL + '/GetSpecific' + `/${gamintojas}` + `/${modelis}` + `/${metai}` + `/${spalva}`);
+  }
 }

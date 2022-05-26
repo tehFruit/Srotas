@@ -29,6 +29,21 @@ namespace Srotas.Controllers
             return await _context.Kapotas.ToListAsync();
         }
 
+        [HttpGet]
+        [Route("GetSpecific/{gamintojas}/{modelis}/{metai}/{spalva}")]
+        public async Task<ActionResult<Kapotas>> GetSpecKapotas([FromRoute] string gamintojas, [FromRoute] string modelis, [FromRoute] int metai, [FromRoute] string spalva)
+        {
+            var kapotas = await _context.Kapotas.Where(x => x.Gamintojas == gamintojas)
+                                                .Where(x => x.Modelis == modelis)
+                                                .Where(x => x.PagaminimoMetai == metai)
+                                                .Where(x => x.Spalva == spalva).FirstOrDefaultAsync();
+            if(kapotas == null)
+            {
+                return NotFound("Nėra tinkamo kapoto");
+            }
+            return Ok(kapotas);
+        }
+
         // GET: api/Kapotas/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Kapotas>> GetKapotas(int id)

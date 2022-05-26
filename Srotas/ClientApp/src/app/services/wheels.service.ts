@@ -29,4 +29,8 @@ export class WheelsService {
   deleteWheels(id: number): Observable<Wheels> {
     return this.http.delete<Wheels>(this.baseURL + `/${id}`);
   }
+
+  getSpecWheels(dydis: string, plotis:number) : Observable<Wheels>{
+    return this.http.get<Wheels>(this.baseURL + '/GetSpecific' + `/${dydis}` + `/${plotis}`);
+  }
 }

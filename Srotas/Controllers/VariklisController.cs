@@ -29,6 +29,18 @@ namespace Srotas.Controllers
             return await _context.Variklis.ToListAsync();
         }
 
+        [HttpGet]
+        [Route("GetSpecific/{gamintojas}/{turis}/{tipas}")]
+        public async Task<IActionResult> GetSpecEngine([FromRoute] string gamintojas, [FromRoute] double turis, [FromRoute] string tipas)
+        {
+            var engine = await _context.Variklis.Where(x => x.Gamintojas == gamintojas).Where(x => x.Turis == turis).Where(x => x.KuroTipas == tipas).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
+            if (engine == null)
+            {
+                return NotFound("Nėra tinkamo variklio");
+            }
+            return Ok(engine);
+        }
+
         // GET: api/Variklis/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Variklis>> GetVariklis(int id)

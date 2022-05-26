@@ -1,3 +1,9 @@
+import { DoorsService } from './../../../services/doors.service';
+import { HoodsService } from './../../../services/hoods.service';
+import { SpeakersService } from './../../../services/speakers.service';
+import { EnginesService } from './../../../services/engines.service';
+import { Wheels } from './../../../models/Wheels';
+import { WheelsService } from './../../../services/wheels.service';
 import { CarsService } from './../../../services/cars.service';
 import { Component, OnInit, ɵgetComponentViewDefinitionFactory } from '@angular/core';
 import { Car } from 'src/app/models/Car';
@@ -8,6 +14,7 @@ import { CarDeleteMessageComponent } from '../car-delete-message/car-delete-mess
 import { UserService } from 'src/app/services/user.service';
 import { Buyer } from 'src/app/models/Buyer';
 import { Seller } from 'src/app/models/Seller';
+import { PavaruDezeService } from 'src/app/services/pavaruDeze.service';
 
 @Component({
   selector: 'app-car-table',
@@ -18,15 +25,76 @@ export class CarTableComponent implements OnInit {
   car: Car;
   carData: Car[];
 
+  wheels : any[] = [];
+  engines: any[] = [];
+  gearboxes: any[] =[];
+  speakers: any[] = [];
+  hoods: any[] = [];
+  doors: any[] = [];
+
   currentUser: string;
   buyer: Buyer;
   seller: Seller;
+
+  suggestions: boolean = false;
   
-  constructor(private carService: CarsService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService) { }
+  constructor(
+    private carService: CarsService, 
+    private dialog: MatDialog, 
+    private snackBar: MatSnackBar, 
+    private userService : UserService,
+    private wheelsService: WheelsService,
+    private engineService: EnginesService,
+    private gearboxService: PavaruDezeService,
+    private speakerService: SpeakersService,
+    private hoodService: HoodsService,
+    private doorService: DoorsService
+  ) { }
 
   ngOnInit(): void {
     this.getCars();
     this.getUser();
+  }
+
+  switchSuggestions(){
+    this.suggestions = !this.suggestions;
+    if(this.suggestions){
+      this.getSuggestions();
+    }
+  }
+
+  getSuggestions(){
+    for(let i in this.carData){ //for loop with indexes. if we replace 'in' with 'of' it returns obj itself
+      //Wheels
+      this.wheelsService.getSpecWheels(this.carData[i].ratuDydis, this.carData[i].ratuPlotis).subscribe(w => {
+        this.wheels.push({carIndex: i, suggestedWheels: w});
+      });
+
+      //Engines
+      this.engineService.getSpecEngine(this.carData[i].gamintojas, this.carData[i].variklioTuris, this.carData[i].kuroTipas).subscribe(e => {
+        this.engines.push({carIndex: i, suggestedEngine: e});
+      });
+
+      //Gearboxes
+      this.gearboxService.getSpecPavaruDeze(this.carData[i].gamintojas, this.carData[i].pavaruDezesTipas).subscribe(g => {
+        this.gearboxes.push({carIndex: i, suggestedGearbox: g});
+      });
+
+      //Speakers
+      this.speakerService.getSpecSpeaker(this.carData[i].koloneliuSkersmuo).subscribe(s => {
+        this.speakers.push({carIndex: i, suggestedSpeakers: s});
+      });
+
+      //Hoods
+      this.hoodService.getSpecHood(this.carData[i].gamintojas, this.carData[i].modelis, this.carData[i].pagaminimoMetai, this.carData[i].spalva).subscribe(h => {
+        this.hoods.push({carIndex: i, suggestedHoods: h});
+      });
+
+      //Doors
+      this.doorService.getSpecDoor(this.carData[i].gamintojas, this.carData[i].modelis, this.carData[i].pagaminimoMetai, this.carData[i].spalva).subscribe(d => {
+        this.doors.push({carIndex: i, suggestedDoors: d});
+      });
+    }
   }
 
   getUser(){
@@ -45,8 +113,9 @@ export class CarTableComponent implements OnInit {
 
   getCars(){
     this.carService.getAllCars().subscribe(cars => {
-      console.log(cars);
       this.carData = cars;
+      this.getSuggestions();/////
+      console.log(this.doors);/////
     });
   }
 

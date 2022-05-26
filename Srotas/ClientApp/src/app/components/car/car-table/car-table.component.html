@@ -5,6 +5,11 @@
         Sukurti automobilio skelbimą
       </button>
     </div>
+    <div class="center" *ngIf="currentUser == 'Buyer'">
+      <button mat-flat-button color="primary" (click)="switchSuggestions()">
+        Rekomendacijos
+      </button>
+    </div>
     <div class="list" *ngFor="let w of carData">
       <h2>{{w.gamintojas}} {{w.modelis}}</h2>
       <div class="details">
@@ -14,6 +19,34 @@
         <p>Spalva: {{w.spalva}}</p>
         <p><b>Kaina: {{w.kaina}} €</b></p>
       </div>
+
+      <ng-container *ngIf="suggestions">
+        <p>Dalių pasiūlymai</p>
+      <div class="wheels">
+        <p>Wheels</p>
+      </div>
+
+      <div class="engine">
+        <p>Engine</p>
+      </div>
+
+      <div class="gearbox">
+        <p>Gearbox</p>
+      </div>
+
+      <div class="speakers">
+        <p>Speakers</p>
+      </div>
+
+      <div class="hood">
+        <p>Hood</p>
+      </div>
+
+      <div class="doors">
+        <p>Doors</p>
+      </div>
+      </ng-container>
+      
       <div class="actions" *ngIf="currentUser == 'Seller'">
         <button mat-icon-button (click)="openEditCarDialog(w)">
           <mat-icon>edit</mat-icon>

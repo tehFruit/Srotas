@@ -25,6 +25,18 @@ namespace Srotas.Controllers
             return Ok(wheels);
         }
 
+        [HttpGet]
+        [Route("GetSpecific/{dydis}/{plotis}")]
+        public async Task<IActionResult> GetSpecWheels([FromRoute] string dydis, [FromRoute] int plotis)
+        {
+            var wheels = await dbContext.Ratai.Where(x => x.Dydis == dydis).Where(x => x.Plotis == plotis).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
+            if(wheels == null)
+            {
+                return NotFound("Nėra tinkamų ratų");
+            }
+            return Ok(wheels);
+        }
+
         //Get one WHEELS by id
         // api/Cars/5
         [HttpGet]

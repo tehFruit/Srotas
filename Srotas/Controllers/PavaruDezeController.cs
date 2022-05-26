@@ -25,6 +25,18 @@ namespace Srotas.Controllers
             return Ok(pavaruDezes);
         }
 
+        [HttpGet]
+        [Route("GetSpecific/{gamintojas}/{tipas}")]
+        public async Task<IActionResult> GetSpecGearbox([FromRoute] string gamintojas, [FromRoute] string tipas)
+        {
+            var gearbox = await dbContext.PavaruDeze.Where(x => x.Gamintojas == gamintojas).Where(x => x.Tipas == tipas).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
+            if (gearbox == null)
+            {
+                return NotFound("Nėra tinkamos pavarų dėžės");
+            }
+            return Ok(gearbox);
+        }
+
         //Get one PavaruDezes by id
         [HttpGet]
         [Route("{id}")]

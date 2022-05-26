@@ -29,4 +29,8 @@ export class PavaruDezeService {
   deletePavaruDeze(id: number): Observable<PavaruDeze> {
     return this.http.delete<PavaruDeze>(this.baseURL + `/${id}`);
   }
+
+  getSpecPavaruDeze(gamintojas: string, tipas: string): Observable<PavaruDeze>{
+    return this.http.get<PavaruDeze>(this.baseURL + '/GetSpecific' + `/${gamintojas}` + `/${tipas}`);
+  }
 }

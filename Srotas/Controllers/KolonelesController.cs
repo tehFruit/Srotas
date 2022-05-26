@@ -29,6 +29,18 @@ namespace Srotas.Controllers
             return await _context.Koloneles.ToListAsync();
         }
 
+        [HttpGet]
+        [Route("GetSpecific/{skersmuo}")]
+        public async Task<ActionResult<Koloneles>> GetSpecKoloneles([FromRoute] int skersmuo)
+        {
+            var koloneles = await _context.Koloneles.Where(x => x.Skersmuo == skersmuo).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
+            if(koloneles == null)
+            {
+                return NotFound("Nėra tinkamų kolonėių");
+            }
+            return Ok(koloneles);
+        }
+
         // GET: api/Koloneles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Koloneles>> GetKoloneles(int id)

@@ -29,4 +29,8 @@ export class SpeakersService {
   deleteSpeaker(id: number): Observable<Speaker> {
     return this.http.delete<Speaker>(this.baseURL + `/${id}`);
   }
+
+  getSpecSpeaker(skersmuo: number) : Observable<Speaker>{
+    return this.http.get<Speaker>(this.baseURL + '/GetSpecific' + `/${skersmuo}`);
+  }
 }

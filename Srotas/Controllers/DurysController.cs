@@ -29,6 +29,21 @@ namespace Srotas.Controllers
             return await _context.Durys.ToListAsync();
         }
 
+        [HttpGet]
+        [Route("GetSpecific/{gamintojas}/{modelis}/{metai}/{spalva}")]
+        public async Task<ActionResult<Durys>> GetSpecDurys([FromRoute] string gamintojas, [FromRoute] string modelis, [FromRoute] int metai, [FromRoute] string spalva)
+        {
+            var doors = await _context.Durys.Where(x => x.Gamintojas == gamintojas)
+                                      .Where(x => x.Modelis == modelis)
+                                      .Where(x => x.PagaminimoMetai == metai)
+                                      .Where(x => x.Spalva == spalva).FirstOrDefaultAsync();
+            if(doors == null)
+            {
+                return NotFound("Nėra tinkamų durų");
+            }
+            return Ok(doors);
+        }
+
         // GET: api/Durys/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Durys>> GetDurys(int id)

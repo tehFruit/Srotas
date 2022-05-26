@@ -29,4 +29,8 @@ export class EnginesService {
   deleteEngine(id: number): Observable<Engine> {
     return this.http.delete<Engine>(this.baseURL + `/${id}`);
   }
+
+  getSpecEngine(gamintojas: string, turis: number, tipas: string) : Observable<Engine>{
+    return this.http.get<Engine>(this.baseURL + '/GetSpecific' + `/${gamintojas}` + `/${turis}` + `/${tipas}`);
+  }
 }
