@@ -59,7 +59,12 @@ export class CarTableComponent implements OnInit {
   switchSuggestions(){
     this.suggestions = !this.suggestions;
     if(this.suggestions){
-      this.getSuggestions();
+      this.getWheelSuggestions();
+      this.getEngineSuggestions();
+      this.getGearboxSuggestions();
+      this.getSpeakerSuggestions();
+      this.getHoodSuggestions();
+      this.getDoorSuggestions();
     }
   }
 
@@ -90,6 +95,61 @@ export class CarTableComponent implements OnInit {
         this.hoods.push({carIndex: i, suggestedHood: h});
       });
 
+      //Doors
+      this.doorService.getSpecDoor(this.carData[i].gamintojas, this.carData[i].modelis, this.carData[i].pagaminimoMetai, this.carData[i].spalva).subscribe(d => {
+        this.doors.push({carIndex: i, suggestedDoors: d});
+      });
+    }
+  }
+
+  getWheelSuggestions(){
+    for(let i in this.carData){
+      //Wheels
+      this.wheelsService.getSpecWheels(this.carData[i].ratuDydis, this.carData[i].ratuPlotis).subscribe(w => {
+        this.wheels.push({carIndex: i, suggestedWheels: w});
+      });
+    }
+  }
+
+  getEngineSuggestions(){
+    for(let i in this.carData){
+      //Engines
+      this.engineService.getSpecEngine(this.carData[i].gamintojas, this.carData[i].variklioTuris, this.carData[i].kuroTipas).subscribe(e => {
+        this.engines.push({carIndex: i, suggestedEngine: e});
+      });
+    }
+  }
+
+  getGearboxSuggestions(){
+    for(let i in this.carData){
+      //Gearboxes
+      this.gearboxService.getSpecPavaruDeze(this.carData[i].gamintojas, this.carData[i].pavaruDezesTipas).subscribe(g => {
+        this.gearboxes.push({carIndex: i, suggestedGearbox: g});
+      });
+    }
+  }
+
+  getSpeakerSuggestions(){
+    for(let i in this.carData){
+      //Speakers
+      this.speakerService.getSpecSpeaker(this.carData[i].koloneliuSkersmuo).subscribe(s => {
+        this.speakers.push({carIndex: i, suggestedSpeakers: s});
+      });
+    }
+  }
+
+  getHoodSuggestions(){
+    for(let i in this.carData){
+      //Hoods
+      this.hoodService.getSpecHood(this.carData[i].gamintojas, this.carData[i].modelis, this.carData[i].pagaminimoMetai, this.carData[i].spalva).subscribe(h => {
+        this.hoods.push({carIndex: i, suggestedHood: h});
+      });
+
+    }
+  }
+
+  getDoorSuggestions(){
+    for(let i in this.carData){
       //Doors
       this.doorService.getSpecDoor(this.carData[i].gamintojas, this.carData[i].modelis, this.carData[i].pagaminimoMetai, this.carData[i].spalva).subscribe(d => {
         this.doors.push({carIndex: i, suggestedDoors: d});
