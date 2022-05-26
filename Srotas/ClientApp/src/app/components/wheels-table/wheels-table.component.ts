@@ -33,6 +33,7 @@ export class WheelsTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if(data){
         this.wheels = data;
+        this.wheels.pardavejasId = 1;
         this.wheelsService.postWheels(this.wheels).subscribe((data) => {
           this.getAndRefreshData();
           this.snackBar.open('Ratų skelbimas sukurtas', 'Gerai', {duration: 3000});
@@ -63,9 +64,13 @@ export class WheelsTableComponent implements OnInit {
           dydis : data.dydis,
           plotis : data.plotis,
           gamintojas: data.gamintojas,
+          id: wheels.id,
+          parduotas: wheels.parduotas,
+          pardavejasId : wheels.pardavejasId,
+          uzsakymasId : wheels.uzsakymasId
         };
 
-        this.wheelsService.putWheels(wheels.id, data).subscribe(data => {
+        this.wheelsService.putWheels(wheels.id, updateObj).subscribe(data => {
           this.getAndRefreshData();
           this.snackBar.open('Ratų skelbimas atnaujintas', 'Gerai', {duration: 3000});
         });

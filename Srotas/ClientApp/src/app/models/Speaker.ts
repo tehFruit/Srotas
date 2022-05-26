@@ -5,4 +5,7 @@ export class Speaker {
   parduotas: boolean;
   gamintojas: string;
   skersmuo: number;
+
+  pardavejasId: number;
+  uzsakymasId: number | undefined;
 }

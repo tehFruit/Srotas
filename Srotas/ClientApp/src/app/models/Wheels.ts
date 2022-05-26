@@ -6,4 +6,7 @@ export class Wheels {
     dydis: string;
     plotis: number;
     gamintojas: string;
+
+    pardavejasId: number;
+    uzsakymasId: number | undefined;
 }

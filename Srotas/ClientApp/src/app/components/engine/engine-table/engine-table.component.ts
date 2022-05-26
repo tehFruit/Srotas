@@ -42,6 +42,7 @@ export class EngineTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.engine = data;
+        this.engine.pardavejasId = 1;
         this.engineService.postEngine(this.engine).subscribe((data) => {
           this.getAndRefreshData();
           this.snackBar.open('Variklio skelbimas sukurtas', 'Gerai', { duration: 3000 });
@@ -72,9 +73,13 @@ export class EngineTableComponent implements OnInit {
           gamintojas: data.gamintojas,
           turis: data.turis,
           kuroTipas: data.kuroTipas,
+          id: engine.id,
+          parduotas: engine.parduotas,
+          pardavejasId: engine.pardavejasId,
+          uzsakymasId: engine.uzsakymasId
         };
 
-        this.engineService.putEngine(engine.id, data).subscribe(data => {
+        this.engineService.putEngine(engine.id, updateObj).subscribe(data => {
           this.getAndRefreshData();
           this.snackBar.open('Variklio skelbimas atnaujintas', 'Gerai', { duration: 3000 });
         });

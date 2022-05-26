@@ -3,4 +3,6 @@ export class Nuolaida {
     procentai: number;
     kodas: string;
     arPanaudota: boolean;
+
+    pardavejasId: number;
 }

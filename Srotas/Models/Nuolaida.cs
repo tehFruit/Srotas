@@ -11,6 +11,5 @@ namespace Srotas.Models
         public bool ArPanaudota { get; set; }
 
         public int PardavejasId { get; set; }
-        public Pardavejas Pardavejas { get; set; }
     }
 }

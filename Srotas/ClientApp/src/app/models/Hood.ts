@@ -7,4 +7,7 @@ export class Hood {
   modelis: string;
   pagaminimoMetai: number;
   spalva: string;
+
+  pardavejasId: number;
+  uzsakymasId: number | undefined;
 }

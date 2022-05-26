@@ -18,5 +18,8 @@ export class Car {
     koloneliuSkersmuo: number;
     turiKapota: boolean;
     turiDuris: boolean;
-    parduotas: boolean; 
+    parduotas: boolean;
+  
+    pardavejasId: number;
+    uzsakymasId: number | undefined | null;
   }

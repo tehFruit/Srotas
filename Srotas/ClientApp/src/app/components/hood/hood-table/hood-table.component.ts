@@ -1,7 +1,7 @@
 import { HoodDeleteMessageComponent } from './../hood-delete-message/hood-delete-message.component';
 import { HoodPopupComponent } from './../hood-popup/hood-popup.component';
 import { HoodsService } from './../../../services/hoods.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Hood } from './../../../models/Hood';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -43,6 +43,7 @@ export class HoodTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.hood = data;
+        this.hood.pardavejasId = 1;
         this.hoodService.postHood(this.hood).subscribe((data) => {
           this.getAndRefreshData();
           this.snackBar.open('Kapoto skelbimas sukurtas', 'Gerai', { duration: 3000 });
@@ -75,9 +76,13 @@ export class HoodTableComponent implements OnInit {
           modelis: data.modelis,
           pagaminimoMetai: data.pagaminimoMetai,
           spalva: data.spalva,
+          id: hood.id,
+          pardavejasId: hood.pardavejasId,
+          parduotas: hood.parduotas,
+          uzsakymasId : hood.uzsakymasId
         };
 
-        this.hoodService.putHood(hood.id, data).subscribe(data => {
+        this.hoodService.putHood(hood.id, updateObj).subscribe(data => {
           this.getAndRefreshData();
           this.snackBar.open('Kapoto skelbimas atnaujintas', 'Gerai', { duration: 3000 });
         });

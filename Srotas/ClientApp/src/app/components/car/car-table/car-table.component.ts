@@ -23,6 +23,7 @@ export class CarTableComponent implements OnInit {
 
   getCars(){
     this.carService.getAllCars().subscribe(cars => {
+      console.log(cars);
       this.carData = cars;
     });
   }
@@ -39,6 +40,11 @@ export class CarTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if(data){
         this.car = data;
+
+        this.car.pardavejasId = 1;
+        this.car.uzsakymasId = null;
+        
+        console.log(this.car);
         this.carService.postCar(this.car).subscribe((data) => {
           this.getCars();
           this.snackBar.open('Automobilio skelbimas sukurtas', 'Gerai', {duration: 3000});
@@ -97,7 +103,9 @@ export class CarTableComponent implements OnInit {
           turiKapota : data.turiKapota,
           turiDuris : data.turiDuris,
           parduotas : data.parduotas,
-          id: car.id
+          id: car.id,
+          pardavejasId: car.pardavejasId, 
+          uzsakymasId: car.uzsakymasId
         };
 
         this.carService.putCar(car.id, updateObj).subscribe(data => {

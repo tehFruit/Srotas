@@ -7,7 +7,7 @@ namespace Srotas.Models
         [Key]
         public int Id { get; set; }
         public string Slapyvardis { get; set; }
-        public string Saptazodis { get; set; }
+        public string Slaptazodis { get; set; }
         public string elPastas { get; set; }
     }
 }

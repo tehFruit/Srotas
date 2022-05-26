@@ -41,6 +41,7 @@ namespace Srotas.Controllers
         public async Task<IActionResult> AddCar([FromBody] AutomobilioSkelbimas car)
         {
             car.Parduotas = false;
+            car.PardavejasId = 1;
             dbContext.AutomobilioSkelbimas.Add(car);
             await dbContext.SaveChangesAsync();
 

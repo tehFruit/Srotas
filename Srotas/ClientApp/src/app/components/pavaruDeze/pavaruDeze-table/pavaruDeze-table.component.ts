@@ -42,6 +42,7 @@ export class PavaruDezeTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.pavaruDeze = data;
+        this.pavaruDeze.pardavejasId = 1;
         this.pavaruDezeService.postPavaruDeze(this.pavaruDeze).subscribe((data) => {
           this.getAndRefreshData();
           this.snackBar.open('Pavarų dėžės skelbimas sukurtas', 'Gerai', { duration: 3000 });
@@ -69,10 +70,14 @@ export class PavaruDezeTableComponent implements OnInit {
           kaina: data.kaina,
           pavadinimas: data.pavadinimas,
           gamintojas: data.gamintojas,
-          tipas: data.tipas
+          tipas: data.tipas,
+          id: pavaruDeze.id,
+          pardavejasId: pavaruDeze.pardavejasId,
+          parduotas: pavaruDeze.parduotas,
+          uzsakymasId: pavaruDeze.uzsakymasId
         };
 
-        this.pavaruDezeService.putPavaruDeze(pavaruDeze.id, data).subscribe(data => {
+        this.pavaruDezeService.putPavaruDeze(pavaruDeze.id, updateObj).subscribe(data => {
           this.getAndRefreshData();
           this.snackBar.open('Pavarų dėžės skelbimas atnaujintas', 'Gerai', { duration: 3000 });
         });

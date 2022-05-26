@@ -39,6 +39,7 @@ export class NuolaidaTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.nuolaida = data;
+        this.nuolaida.pardavejasId = 1;
         this.nuolaidaService.postNuolaida(this.nuolaida).subscribe((data) => {
           this.getAndRefreshData();
           this.snackBar.open('Nuolaida sukurta', 'Gerai', { duration: 3000 });
@@ -61,11 +62,14 @@ export class NuolaidaTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
         const updateObj = {
-          procentai: nuolaida.procentai,
-          kodas: nuolaida.kodas
+          procentai: data.procentai,
+          kodas: data.kodas,
+          pardavejasId: nuolaida.pardavejasId,
+          id: nuolaida.id,
+          arPanaudota: nuolaida.arPanaudota
         };
 
-        this.nuolaidaService.putNuolaida(nuolaida.id, data).subscribe(data => {
+        this.nuolaidaService.putNuolaida(nuolaida.id, updateObj).subscribe(data => {
           this.getAndRefreshData();
           this.snackBar.open('Nuolaidos informacija atnaujinta', 'Gerai', { duration: 3000 });
         });

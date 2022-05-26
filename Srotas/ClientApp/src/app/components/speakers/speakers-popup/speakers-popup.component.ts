@@ -17,9 +17,9 @@ export class SpeakersPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     { kaina, pavadinimas, gamintojas, skersmuo }: Speaker) {
     if (pavadinimas) {
-      this.title = 'Redaguoti variklio skelbimą';
+      this.title = 'Redaguoti kolonėlių skelbimą';
     } else {
-      this.title = 'Sukurti variklio skelbimą';
+      this.title = 'Sukurti kolonelių skelbimą';
     }
     this.form = this.fb.group({
       kaina: [kaina, Validators.pattern('^[\\d]+$')],

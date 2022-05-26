@@ -5,5 +5,8 @@ export class PavaruDeze {
     parduotas: boolean;
     gamintojas: string;
     tipas: string;
+
+    pardavejasId: number;
+    uzsakymasId: number | undefined;
   }
   

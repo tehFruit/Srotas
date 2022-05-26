@@ -101,10 +101,6 @@ namespace Srotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PardavejasId");
-
-                    b.HasIndex("UzsakymasId");
-
                     b.ToTable("AutomobilioSkelbimas");
                 });
 
@@ -148,10 +144,6 @@ namespace Srotas.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PardavejasId");
-
-                    b.HasIndex("UzsakymasId");
 
                     b.ToTable("Durys");
                 });
@@ -197,10 +189,6 @@ namespace Srotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PardavejasId");
-
-                    b.HasIndex("UzsakymasId");
-
                     b.ToTable("Kapotas");
                 });
 
@@ -237,10 +225,6 @@ namespace Srotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PardavejasId");
-
-                    b.HasIndex("UzsakymasId");
-
                     b.ToTable("Koloneles");
                 });
 
@@ -267,8 +251,6 @@ namespace Srotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PardavejasId");
-
                     b.ToTable("Nuolaida");
                 });
 
@@ -283,7 +265,7 @@ namespace Srotas.Migrations
                     b.Property<double>("Reitingas")
                         .HasColumnType("float");
 
-                    b.Property<string>("Saptazodis")
+                    b.Property<string>("Slaptazodis")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -334,10 +316,6 @@ namespace Srotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PardavejasId");
-
-                    b.HasIndex("UzsakymasId");
-
                     b.ToTable("PavaruDeze");
                 });
 
@@ -352,7 +330,7 @@ namespace Srotas.Migrations
                     b.Property<double>("Balansas")
                         .HasColumnType("float");
 
-                    b.Property<string>("Saptazodis")
+                    b.Property<string>("Slaptazodis")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -406,10 +384,6 @@ namespace Srotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PardavejasId");
-
-                    b.HasIndex("UzsakymasId");
-
                     b.ToTable("Ratai");
                 });
 
@@ -431,15 +405,13 @@ namespace Srotas.Migrations
                     b.Property<int>("PirkejasId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("PristatymoData")
+                        .HasColumnType("datetime2");
+
                     b.Property<double>("Suma")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("pristatymoData")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PirkejasId");
 
                     b.ToTable("Uzsakymas");
                 });
@@ -481,193 +453,7 @@ namespace Srotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PardavejasId");
-
-                    b.HasIndex("UzsakymasId");
-
                     b.ToTable("Variklis");
-                });
-
-            modelBuilder.Entity("Srotas.Models.AutomobilioSkelbimas", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("Automobiliai")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Srotas.Models.Uzsakymas", "Uzsakymas")
-                        .WithMany("Automobiliai")
-                        .HasForeignKey("UzsakymasId");
-
-                    b.Navigation("Pardavejas");
-
-                    b.Navigation("Uzsakymas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Durys", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("Durys")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Srotas.Models.Uzsakymas", "Uzsakymas")
-                        .WithMany("Durys")
-                        .HasForeignKey("UzsakymasId");
-
-                    b.Navigation("Pardavejas");
-
-                    b.Navigation("Uzsakymas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Kapotas", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("Kapotai")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Srotas.Models.Uzsakymas", "Uzsakymas")
-                        .WithMany("Kapotai")
-                        .HasForeignKey("UzsakymasId");
-
-                    b.Navigation("Pardavejas");
-
-                    b.Navigation("Uzsakymas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Koloneles", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("Koloneles")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Srotas.Models.Uzsakymas", "Uzsakymas")
-                        .WithMany("Koloneles")
-                        .HasForeignKey("UzsakymasId");
-
-                    b.Navigation("Pardavejas");
-
-                    b.Navigation("Uzsakymas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Nuolaida", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("Nuolaidos")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pardavejas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.PavaruDeze", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("PavaruDezes")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Srotas.Models.Uzsakymas", "Uzsakymas")
-                        .WithMany("PavaruDezes")
-                        .HasForeignKey("UzsakymasId");
-
-                    b.Navigation("Pardavejas");
-
-                    b.Navigation("Uzsakymas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Ratai", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("Ratai")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Srotas.Models.Uzsakymas", "Uzsakymas")
-                        .WithMany("Ratai")
-                        .HasForeignKey("UzsakymasId");
-
-                    b.Navigation("Pardavejas");
-
-                    b.Navigation("Uzsakymas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Uzsakymas", b =>
-                {
-                    b.HasOne("Srotas.Models.Pirkejas", "Pirkejas")
-                        .WithMany("Uzsakymai")
-                        .HasForeignKey("PirkejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pirkejas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Variklis", b =>
-                {
-                    b.HasOne("Srotas.Models.Pardavejas", "Pardavejas")
-                        .WithMany("Varikiai")
-                        .HasForeignKey("PardavejasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Srotas.Models.Uzsakymas", "Uzsakymas")
-                        .WithMany("Varikiai")
-                        .HasForeignKey("UzsakymasId");
-
-                    b.Navigation("Pardavejas");
-
-                    b.Navigation("Uzsakymas");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Pardavejas", b =>
-                {
-                    b.Navigation("Automobiliai");
-
-                    b.Navigation("Durys");
-
-                    b.Navigation("Kapotai");
-
-                    b.Navigation("Koloneles");
-
-                    b.Navigation("Nuolaidos");
-
-                    b.Navigation("PavaruDezes");
-
-                    b.Navigation("Ratai");
-
-                    b.Navigation("Varikiai");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Pirkejas", b =>
-                {
-                    b.Navigation("Uzsakymai");
-                });
-
-            modelBuilder.Entity("Srotas.Models.Uzsakymas", b =>
-                {
-                    b.Navigation("Automobiliai");
-
-                    b.Navigation("Durys");
-
-                    b.Navigation("Kapotai");
-
-                    b.Navigation("Koloneles");
-
-                    b.Navigation("PavaruDezes");
-
-                    b.Navigation("Ratai");
-
-                    b.Navigation("Varikiai");
                 });
 #pragma warning restore 612, 618
         }

@@ -42,6 +42,7 @@ export class SpeakersTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.speaker = data;
+        this.speaker.pardavejasId = 1;
         this.speakerService.postSpeaker(this.speaker).subscribe((data) => {
           this.getAndRefreshData();
           this.snackBar.open('Kolonėlės skelbimas sukurtas', 'Gerai', { duration: 3000 });
@@ -70,9 +71,13 @@ export class SpeakersTableComponent implements OnInit {
           pavadinimas: data.pavadinimas,
           gamintojas: data.gamintojas,
           skersmuo: data.skersmuo,
+          id: speaker.id,
+          parduotas: speaker.parduotas,
+          pardavejasId: speaker.pardavejasId,
+          uzsakymasId: speaker.uzsakymasId
         };
 
-        this.speakerService.putSpeaker(speaker.id, data).subscribe(data => {
+        this.speakerService.putSpeaker(speaker.id, updateObj).subscribe(data => {
           this.getAndRefreshData();
           this.snackBar.open('Kolonėlės skelbimas atnaujintas', 'Gerai', { duration: 3000 });
         });

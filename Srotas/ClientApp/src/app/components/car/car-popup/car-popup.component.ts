@@ -20,12 +20,6 @@ export class CarPopupComponent implements OnInit {
       turiRatus, ratuDydis, ratuPlotis, turiVarikli, variklioTuris, turiPavaruDeze, turiKoloneles,
       koloneliuSkersmuo, turiKapota, turiDuris }: Car) 
       { 
-
-        if (gamintojas) {
-          this.title = 'Redaguoti automobilio skelbimą';
-        } else {
-          this.title = 'Sukurti automobilio skelbimą';
-        }
         this.form = this.fb.group({
           gamintojas: [gamintojas, Validators.required],
           modelis: [modelis, Validators.required],
@@ -47,6 +41,18 @@ export class CarPopupComponent implements OnInit {
           turiDuris: [turiDuris, Validators.required]
         }) as FormGroup;
         this.notCorrect = false;
+
+        if (gamintojas) {
+          this.title = 'Redaguoti automobilio skelbimą';
+        } else {
+          this.title = 'Sukurti automobilio skelbimą';
+          this.form.controls.turiRatus.setValue(false);
+          this.form.controls.turiVarikli.setValue(false);
+          this.form.controls.turiPavaruDeze.setValue(false);
+          this.form.controls.turiKoloneles.setValue(false);
+          this.form.controls.turiKapota.setValue(false);
+          this.form.controls.turiDuris.setValue(false);
+        }
       }
 
   ngOnInit(): void {}

@@ -43,6 +43,7 @@ export class DoorTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.door = data;
+        this.door.pardavejasId = 1;
         this.doorService.postDoor(this.door).subscribe((data) => {
           this.getAndRefreshData();
           this.snackBar.open('Durų skelbimas sukurtas', 'Gerai', { duration: 3000 });
@@ -75,9 +76,13 @@ export class DoorTableComponent implements OnInit {
           modelis: data.modelis,
           pagaminimoMetai: data.pagaminimoMetai,
           spalva: data.spalva,
+          id: door.id,
+          parduotas: door.parduotas,
+          pardavejasId: door.pardavejasId,
+          uzsakymasId: door.uzsakymasId
         };
 
-        this.doorService.putDoor(door.id, data).subscribe(data => {
+        this.doorService.putDoor(door.id, updateObj).subscribe(data => {
           this.getAndRefreshData();
           this.snackBar.open('Durų skelbimas atnaujintas', 'Gerai', { duration: 3000 });
         });

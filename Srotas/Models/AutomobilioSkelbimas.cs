@@ -27,9 +27,7 @@ namespace Srotas.Models
         public bool Parduotas { get; set; }
 
         public int? UzsakymasId { get; set; }
-        public Uzsakymas Uzsakymas { get; set; }
 
         public int PardavejasId { get; set; }
-        public Pardavejas Pardavejas { get; set; }
     }
 }

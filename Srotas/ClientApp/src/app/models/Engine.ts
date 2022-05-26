@@ -6,4 +6,7 @@ export class Engine {
   gamintojas: string;
   turis: number;
   kuroTipas: string;
+
+  pardavejasId: number;
+  uzsakymasId: number | undefined;
 }
