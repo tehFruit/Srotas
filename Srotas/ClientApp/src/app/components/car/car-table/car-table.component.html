@@ -67,7 +67,7 @@
         </button>
       </div>
       <div class="actions" *ngIf="currentUser == 'Buyer'">
-        <button mat-icon-button>
+        <button mat-icon-button (click)="addCarToCart(w)">
           <mat-icon>shopping_cart</mat-icon>
         </button>
       </div>

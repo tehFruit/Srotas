@@ -1,3 +1,4 @@
+import { CartService } from './../../../services/cart.service';
 import { DoorsService } from './../../../services/doors.service';
 import { HoodsService } from './../../../services/hoods.service';
 import { SpeakersService } from './../../../services/speakers.service';
@@ -48,7 +49,8 @@ export class CarTableComponent implements OnInit {
     private gearboxService: PavaruDezeService,
     private speakerService: SpeakersService,
     private hoodService: HoodsService,
-    private doorService: DoorsService
+    private doorService: DoorsService,
+    private cart: CartService
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +68,11 @@ export class CarTableComponent implements OnInit {
       this.getHoodSuggestions();
       this.getDoorSuggestions();
     }
+  }
+
+  addCarToCart(car: Car){
+    this.cart.addCar(car);
+    
   }
 
   getSuggestions(){
