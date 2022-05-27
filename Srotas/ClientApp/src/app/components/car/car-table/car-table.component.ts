@@ -1,3 +1,4 @@
+import { ConfirmationService } from './../../../services/confirmation.service';
 import { CartService } from './../../../services/cart.service';
 import { DoorsService } from './../../../services/doors.service';
 import { HoodsService } from './../../../services/hoods.service';
@@ -50,7 +51,8 @@ export class CarTableComponent implements OnInit {
     private speakerService: SpeakersService,
     private hoodService: HoodsService,
     private doorService: DoorsService,
-    private cart: CartService
+    private cart: CartService,
+    private confirmService: ConfirmationService
   ) { }
 
   ngOnInit(): void {
@@ -71,8 +73,8 @@ export class CarTableComponent implements OnInit {
   }
 
   addCarToCart(car: Car){
-    this.cart.addCar(car);
-    
+    //this.cart.addCar(car);
+    this.confirmService.confirm('Ar norit automatiskai surinkt dalis?', () => console.log('They said yes'));
   }
 
   getSuggestions(){
