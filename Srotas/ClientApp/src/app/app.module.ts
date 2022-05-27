@@ -41,6 +41,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCommonModule} from '@angular/material/core';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -100,7 +101,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     MatSlideToggleModule,
     MatSelectModule,
     MatInputModule,
-    MatCommonModule
+    MatCommonModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
