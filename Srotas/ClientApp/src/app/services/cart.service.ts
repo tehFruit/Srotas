@@ -43,6 +43,34 @@ export class CartService {
     this.initDiscount();
   }
 
+  getCars(){
+    return this.cars;
+  }
+
+  getWheels(){
+    return this.wheels;
+  }
+
+  getEngines(){
+    return this.engines;
+  }
+
+  getGearboxes(){
+    return this.gearboxes;
+  }
+
+  getSpeakers(){
+    return this.speakers;
+  }
+
+  getHoods(){
+    return this.hoods;
+  }
+
+  getDoors(){
+    return this.doors;
+  }
+
   empty(){
     this.cars = [];
     localStorage.setItem(this.strCars, JSON.stringify(this.cars));

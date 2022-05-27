@@ -40,6 +40,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCommonModule} from '@angular/material/core';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 
@@ -72,6 +73,7 @@ import {MatCommonModule} from '@angular/material/core';
     CarTableComponent,
     CarDeleteMessageComponent,
     CarPopupComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

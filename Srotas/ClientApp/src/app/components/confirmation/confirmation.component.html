@@ -1,0 +1,14 @@
+<mat-list>
+    <div mat-subheader>Confirmation</div>
+    <mat-list-item>
+        <mat-icon mat-list-icon>info</mat-icon>
+        <div mat-line>{{message}}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+        <div class="button-container">
+            <button mat-raised-button color="primary" (click)="accept()">Taip</button>
+            <button mat-raised-button color="cancel" (click)="close()">Ne</button>
+        </div>
+    </mat-list-item>
+</mat-list>
