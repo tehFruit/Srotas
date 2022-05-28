@@ -43,6 +43,7 @@ import {MatCommonModule} from '@angular/material/core';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import {MatListModule} from '@angular/material/list';
 import { PartListComponent } from './components/part-list/part-list.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -77,6 +78,7 @@ import { PartListComponent } from './components/part-list/part-list.component';
     CarPopupComponent,
     ConfirmationComponent,
     PartListComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -93,7 +95,8 @@ import { PartListComponent } from './components/part-list/part-list.component';
       { path: 'Kapotai', component: HoodTableComponent, pathMatch: 'full' },
       { path: 'Durys', component: DoorTableComponent, pathMatch: 'full' },
       { path: 'Automobiliai', component: CarTableComponent, pathMatch: 'full'},
-      { path: 'Dalys', component: PartListComponent, pathMatch: 'full'}
+      { path: 'Dalys', component: PartListComponent, pathMatch: 'full'},
+      { path: 'Krepselis', component: CartComponent, pathMatch: 'full' }
     ]),
     BrowserAnimationsModule,
     MatFormFieldModule,

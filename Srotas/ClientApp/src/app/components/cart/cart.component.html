@@ -1,0 +1,71 @@
+<div class="cart">
+    <h2>Pirkinių krepšelis</h2>
+    <br>
+
+    <h3><b>Automobiliai</b></h3>
+    <div class="item" *ngFor="let car of cars">
+        <div class="properties">
+            <p>{{car.gamintojas}} {{car.modelis}} {{car.pagaminimoMetai}}</p>
+            <p>Kuro tipas: {{car.kuroTipas}}</p>
+            <p>Rida: {{car.rida}}</p>
+            <p><b>Kaina: {{car.kaina}}</b></p>
+        </div>
+        <div class="delete">
+            <button mat-icon-button (click)="removeCar(car)" >
+                <mat-icon>close</mat-icon>
+              </button>
+        </div>
+    </div>
+
+    <h3><b>Ratai</b></h3>
+    <div class="item" *ngFor="let w of wheels">
+        <div class="properties">
+            <p>{{w.pavadinimas}}</p>
+            <p>Gamintojas: {{w.gamintojas}}</p>
+            <p>Parametrai: {{w.dydis}} {{w.plotis}}</p>
+            <p><b>Kaina: {{w.kaina}}</b></p>
+        </div>
+        <div class="delete">
+            <button mat-icon-button (click)="removeWheels(w)" >
+                <mat-icon>close</mat-icon>
+              </button>
+        </div>
+    </div>
+
+    <h3><b>Varikliai</b></h3>
+    <div class="item" *ngFor="let e of engines">
+        <div class="properties">
+            <p>{{e.pavadinimas}}</p>
+            <p>Gamintojas: {{e.gamintojas}}</p>
+            <p>Parametrai: {{e.turis}} {{e.kuroTipas}}</p>
+            <p><b>Kaina: {{e.kaina}}</b></p>
+        </div>
+        <div class="delete">
+            <button mat-icon-button (click)="removeEngine(e)" >
+                <mat-icon>close</mat-icon>
+              </button>
+        </div>
+    </div>
+
+    <h3><b>Pavarų dėžės</b></h3>
+    <div class="item" *ngFor="let g of gearboxes">
+        <div class="properties">
+            <p>{{g.pavadinimas}}</p>
+            <p>Gamintojas: {{g.gamintojas}}</p>
+            <p>Tipas: {{g.tipas}}</p>
+            <p><b>Kaina: {{g.kaina}}</b></p>
+        </div>
+        <div class="delete">
+            <button mat-icon-button (click)="removeGearbox(g)" >
+                <mat-icon>close</mat-icon>
+              </button>
+        </div>
+    </div>
+
+    <h3><b>Kolonėlės</b></h3>
+    <div class="item" *ngFor="let s of speakers">
+        <div class="properties">
+            <p>{{s.pavadinimas}}</p>
+        </div>
+    </div>
+</div>

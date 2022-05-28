@@ -1,3 +1,8 @@
+import { Door } from './../../../models/Door';
+import { Hood } from './../../../models/Hood';
+import { Speaker } from './../../../models/Speaker';
+import { PavaruDeze } from './../../../models/PavaruDeze';
+import { Engine } from './../../../models/Engine';
 import { ConfirmationService } from './../../../services/confirmation.service';
 import { CartService } from './../../../services/cart.service';
 import { DoorsService } from './../../../services/doors.service';
@@ -58,6 +63,30 @@ export class CarTableComponent implements OnInit {
   ngOnInit(): void {
     this.getCars();
     this.getUser();
+  }
+
+  addWheelsToCart(w: Wheels){
+    this.cart.addWheels(w);
+  }
+
+  addEngineToCart(e: Engine){
+    this.cart.addEngine(e);
+  }
+
+  addGearboxToCart(g: PavaruDeze){
+    this.cart.addGearbox(g);
+  }
+
+  addSpeakersToCart(s: Speaker){
+    this.cart.addSpeakers(s);
+  }
+
+  addHoodToCart(h: Hood){
+    this.cart.addHood(h);
+  }
+
+  addDoorsToCart(d: Door){
+    this.cart.addDoors(d);
   }
 
   switchSuggestions(){
