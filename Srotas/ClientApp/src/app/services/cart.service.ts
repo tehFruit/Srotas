@@ -168,14 +168,16 @@ export class CartService {
     }
   }
 
-  addCar(car: Car){
+  addCar(car: Car): boolean{
     const index = this.cars.indexOf(car, 0);
     if(index == -1){
       this.cars.push(car);
       this.total += car.kaina;
       localStorage.setItem(this.strCars, JSON.stringify(this.cars));
       localStorage.setItem(this.strTotal, JSON.stringify(this.total));
+      return true;
     }
+    return false;
   }
 
   addWheels(wheels: Wheels){

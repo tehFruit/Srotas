@@ -1,3 +1,4 @@
+import { CartService } from './../../../services/cart.service';
 import { DoorDeleteMessageComponent } from '../door-delete-message/door-delete-message.component';
 import { DoorPopupComponent } from '../door-popup/door-popup.component';
 import { DoorsService } from '../../../services/doors.service';
@@ -5,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 import { Door } from '../../../models/Door';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
+import { Buyer } from 'src/app/models/Buyer';
+import { Seller } from 'src/app/models/Seller';
 
 @Component({
   selector: 'app-door-table',
@@ -15,20 +19,34 @@ export class DoorTableComponent implements OnInit {
   door: Door;
   doorData: Door[];
   show: boolean = false;
-  displayedColumns = [
-    'kaina',
-    'pavadinimas',
-    'modelis',
-    'pagaminimoMetai',
-    'gamintojas',
-    'spalva',
-    'veiksmai'
-    ];
+  
+  currentUser: string;
+  buyer: Buyer;
+  seller: Seller;
 
-  constructor(private doorService: DoorsService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private doorService: DoorsService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService, private cart: CartService) { }
 
   ngOnInit(): void {
     this.getAndRefreshData();
+    this.getUser();
+  }
+
+  addToCart(d: Door){
+    this.cart.addDoors(d);
+  }
+
+  getUser(){
+    this.currentUser = this.userService.getUserType();
+    if(this.currentUser == 'Buyer'){
+      this.userService.getBuyer().subscribe(b => {
+        this.buyer = b;
+      });
+    }
+    else{
+      this.userService.getSeller().subscribe(s => {
+        this.seller = s;
+      });
+    }
   }
 
   public openCreateDoorDialog(): void {

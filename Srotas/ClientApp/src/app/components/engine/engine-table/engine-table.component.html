@@ -1,5 +1,8 @@
 <div>
   <div class="center">
+    <h2>Variklių skelbimai</h2>
+  </div>
+  <div class="center" *ngIf="currentUser == 'Seller'">
     <button mat-flat-button color="primary" (click)="openCreateEngineDialog()">
       Sukurti variklio skelbimą
     </button>
@@ -12,12 +15,17 @@
       <p>Gamintojas: {{w.gamintojas}}</p>
       <p><b>Kaina: {{w.kaina}} €</b></p>
     </div>
-    <div class="actions">
+    <div class="actions" *ngIf="currentUser == 'Seller'">
       <button mat-icon-button (click)="openEditEngineDialog(w)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button (click)="openDeleteEngineDialog(w)">
         <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="actions" *ngIf="currentUser == 'Buyer'">
+      <button mat-icon-button (click)="addToCart(w)">
+        <mat-icon>shopping_cart</mat-icon>
       </button>
     </div>
   </div>

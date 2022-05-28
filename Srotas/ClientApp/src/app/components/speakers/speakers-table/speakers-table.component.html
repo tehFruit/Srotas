@@ -1,5 +1,8 @@
 <div>
   <div class="center">
+    <h2>Kolonėlių skelbimai</h2>
+  </div>
+  <div class="center" *ngIf="currentUser == 'Seller'">
     <button mat-flat-button color="primary" (click)="openCreateSpeakerDialog()">
       Sukurti kolonėlės skelbimą
     </button>
@@ -11,12 +14,17 @@
       <p>Gamintojas: {{w.gamintojas}}</p>
       <p><b>Kaina: {{w.kaina}} €</b></p>
     </div>
-    <div class="actions">
+    <div class="actions" *ngIf="currentUser == 'Seller'">
       <button mat-icon-button (click)="openEditSpeakerDialog(w)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button (click)="openDeleteSpeakerDialog(w)">
         <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="currentUser == 'Buyer'" class="actions">
+      <button mat-icon-button (click)="addToCart(w)">
+        <mat-icon>shopping_cart</mat-icon>
       </button>
     </div>
   </div>

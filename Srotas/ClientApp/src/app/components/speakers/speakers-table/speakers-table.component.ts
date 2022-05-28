@@ -1,3 +1,4 @@
+import { CartService } from './../../../services/cart.service';
 import { SpeakersDeleteMessageComponent } from './../speakers-delete-message/speakers-delete-message.component';
 import { SpeakersPopupComponent } from './../speakers-popup/speakers-popup.component';
 import { SpeakersService } from './../../../services/speakers.service';
@@ -5,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 import { Speaker } from './../../../models/Speaker';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
+import { Buyer } from 'src/app/models/Buyer';
+import { Seller } from 'src/app/models/Seller';
 
 @Component({
   selector: 'app-speakers-table',
@@ -16,18 +20,34 @@ export class SpeakersTableComponent implements OnInit {
   speaker: Speaker;
   speakerData: Speaker[];
   show: boolean = false;
-  displayedColumns = [
-    'kaina',
-    'pavadinimas',
-    'gamintojas',
-    'skersmuo',
-    'veiksmai'
-  ];
+  
+  currentUser: string;
+  buyer: Buyer;
+  seller: Seller;
 
-  constructor(private speakerService: SpeakersService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private speakerService: SpeakersService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService, private cart: CartService) { }
 
   ngOnInit(): void {
     this.getAndRefreshData();
+    this.getUser();
+  }
+
+  addToCart(sp : Speaker){
+    this.cart.addSpeakers(sp);
+  }
+
+  getUser(){
+    this.currentUser = this.userService.getUserType();
+    if(this.currentUser == 'Buyer'){
+      this.userService.getBuyer().subscribe(b => {
+        this.buyer = b;
+      });
+    }
+    else{
+      this.userService.getSeller().subscribe(s => {
+        this.seller = s;
+      });
+    }
   }
 
   public openCreateSpeakerDialog(): void {

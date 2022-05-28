@@ -1,5 +1,8 @@
 <div>
   <div class="center">
+    <h2>Pavarų dėžės</h2>
+  </div>
+  <div class="center" *ngIf="currentUser == 'Seller'">
     <button mat-flat-button color="primary" (click)="openCreatePavaruDezeDialog()">
       Sukurti pavarų dėžės skelbimą
     </button>
@@ -11,12 +14,17 @@
       <p>Gamintojas: {{w.gamintojas}}</p>
       <p>Tipas: {{w.tipas}}</p>
     </div>
-    <div class="actions">
+    <div class="actions" *ngIf="currentUser == 'Seller'">
       <button mat-icon-button (click)="openEditPavaruDezeDialog(w)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button (click)="openDeletePavaruDezeDialog(w)">
         <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="actions" *ngIf="currentUser == 'Buyer'">
+      <button mat-icon-button (click)="addToCart(w)">
+        <mat-icon>shopping_cart</mat-icon>
       </button>
     </div>
   </div>

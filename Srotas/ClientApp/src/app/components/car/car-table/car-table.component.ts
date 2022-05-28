@@ -73,8 +73,71 @@ export class CarTableComponent implements OnInit {
   }
 
   addCarToCart(car: Car){
-    //this.cart.addCar(car);
-    this.confirmService.confirm('Ar norit automatiskai surinkt dalis?', () => console.log('They said yes'));
+    if(this.cart.addCar(car) && this.isMissingParts(car)){
+      this.confirmService.confirm('Ar norit automatiskai surinkt dalis?', () => this.missingPartsToCart(car));
+    }
+  }
+
+  missingPartsToCart(car: Car){
+    if(!car.turiRatus){
+      this.wheelsService.getSpecWheels(car.ratuDydis, car.ratuPlotis).subscribe(found => {
+        this.cart.addWheels(found);
+      }, none => {});
+    }
+
+    if(!car.turiVarikli){
+      this.engineService.getSpecEngine(car.gamintojas, car.variklioTuris, car.kuroTipas).subscribe(found => {
+        this.cart.addEngine(found);
+      });
+    }
+
+    if(!car.turiPavaruDeze){
+      this.gearboxService.getSpecPavaruDeze(car.gamintojas, car.pavaruDezesTipas).subscribe(found => {
+        this.cart.addGearbox(found);
+      });
+    }
+
+    if(!car.turiKoloneles){
+      this.speakerService.getSpecSpeaker(car.koloneliuSkersmuo).subscribe( found => {
+        this.cart.addSpeakers(found);
+      });
+    }
+
+    if(!car.turiKapota){
+      this.hoodService.getSpecHood(car.gamintojas, car.modelis, car.pagaminimoMetai, car.spalva).subscribe(found => {
+        this.cart.addHood(found);
+      });
+    }
+
+    if(!car.turiDuris){
+      this.doorService.getSpecDoor(car.gamintojas, car.modelis, car.pagaminimoMetai, car.spalva).subscribe(found => {
+        this.cart.addDoors(found);
+      });
+    }
+  }
+
+  isMissingParts(car: Car): boolean{
+    var missing = false;
+    if(!car.turiRatus){
+      missing = true;
+    }
+    if(!car.turiVarikli){
+      missing = true;
+    }
+    if(!car.turiPavaruDeze){
+      missing = true;
+    }
+    if(!car.turiKoloneles){
+      missing = true;
+    }
+    if(!car.turiKapota){
+      missing = true;
+    }
+    if(!car.turiDuris){
+      missing = true;
+    }
+
+    return missing;
   }
 
   getSuggestions(){

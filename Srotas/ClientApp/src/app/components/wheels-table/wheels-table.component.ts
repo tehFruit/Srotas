@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
 import { Wheels } from './../../models/Wheels';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Buyer } from 'src/app/models/Buyer';
+import { Seller } from 'src/app/models/Seller';
+import { UserService } from 'src/app/services/user.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-wheels-table',
@@ -15,10 +19,33 @@ export class WheelsTableComponent implements OnInit {
   wheels: Wheels;
   wheelsData: Wheels[];
 
-  constructor(private wheelsService: WheelsService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  currentUser: string;
+  buyer: Buyer;
+  seller: Seller;
+
+  constructor(private wheelsService: WheelsService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService, private cart: CartService) { }
 
   ngOnInit(): void {
     this.getAndRefreshData();
+    this.getUser();
+  }
+
+  addToCart(wheels: Wheels){
+    this.cart.addWheels(wheels);
+  }
+
+  getUser(){
+    this.currentUser = this.userService.getUserType();
+    if(this.currentUser == 'Buyer'){
+      this.userService.getBuyer().subscribe(b => {
+        this.buyer = b;
+      });
+    }
+    else{
+      this.userService.getSeller().subscribe(s => {
+        this.seller = s;
+      });
+    }
   }
 
   public openCreateWheelsDialog(): void{

@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
 import { Engine } from './../../../models/Engine';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
+import { Buyer } from 'src/app/models/Buyer';
+import { Seller } from 'src/app/models/Seller';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-engine-table',
@@ -15,19 +19,34 @@ export class EngineTableComponent implements OnInit {
   engine: Engine;
   engineData: Engine[];
   show: boolean = false;
-  displayedColumns = [
-    'kaina',
-    'pavadinimas',
-    'dydis',
-    'plotis',
-    'gamintojas',
-    'veiksmai'
-  ];
 
-  constructor(private engineService: EnginesService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  currentUser: string;
+  buyer: Buyer;
+  seller: Seller;
+
+  constructor(private engineService: EnginesService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService, private cart: CartService) { }
 
   ngOnInit(): void {
     this.getAndRefreshData();
+    this.getUser();
+  }
+
+  addToCart(engine: Engine){
+    this.cart.addEngine(engine);
+  }
+
+  getUser(){
+    this.currentUser = this.userService.getUserType();
+    if(this.currentUser == 'Buyer'){
+      this.userService.getBuyer().subscribe(b => {
+        this.buyer = b;
+      });
+    }
+    else{
+      this.userService.getSeller().subscribe(s => {
+        this.seller = s;
+      });
+    }
   }
 
   public openCreateEngineDialog(): void {

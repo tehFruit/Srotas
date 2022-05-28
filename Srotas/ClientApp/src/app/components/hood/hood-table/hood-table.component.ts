@@ -1,3 +1,4 @@
+import { CartService } from './../../../services/cart.service';
 import { HoodDeleteMessageComponent } from './../hood-delete-message/hood-delete-message.component';
 import { HoodPopupComponent } from './../hood-popup/hood-popup.component';
 import { HoodsService } from './../../../services/hoods.service';
@@ -5,6 +6,9 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { Hood } from './../../../models/Hood';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Buyer } from 'src/app/models/Buyer';
+import { Seller } from 'src/app/models/Seller';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-hood-table',
@@ -15,20 +19,34 @@ export class HoodTableComponent implements OnInit {
   hood: Hood;
   hoodData: Hood[];
   show: boolean = false;
-  displayedColumns = [
-    'kaina',
-    'pavadinimas',
-    'modelis',
-    'pagaminimoMetai',
-    'gamintojas',
-    'spalva',
-    'veiksmai'
-    ];
+  
+  currentUser: string;
+  buyer: Buyer;
+  seller: Seller;
 
-  constructor(private hoodService: HoodsService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private hoodService: HoodsService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService, private cart: CartService) { }
 
   ngOnInit(): void {
     this.getAndRefreshData();
+    this.getUser();
+  }
+
+  addToCart(h: Hood){
+    this.cart.addHood(h);
+  }
+
+  getUser(){
+    this.currentUser = this.userService.getUserType();
+    if(this.currentUser == 'Buyer'){
+      this.userService.getBuyer().subscribe(b => {
+        this.buyer = b;
+      });
+    }
+    else{
+      this.userService.getSeller().subscribe(s => {
+        this.seller = s;
+      });
+    }
   }
 
   public openCreateHoodDialog(): void {

@@ -1,3 +1,4 @@
+import { CartService } from './../../../services/cart.service';
 import { PavaruDezeDeleteMessageComponent } from '../pavaruDeze-delete-message/pavaruDeze-delete-message.component';
 import { PavaruDezePopupComponent } from '../pavaruDeze-popup/pavaruDeze-popup.component';
 import { PavaruDezeService } from '../../../services/pavaruDeze.service';
@@ -5,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 import { PavaruDeze } from '../../../models/PavaruDeze';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
+import { Buyer } from 'src/app/models/Buyer';
+import { Seller } from 'src/app/models/Seller';
 
 @Component({
   selector: 'app-pavaruDeze-table',
@@ -16,18 +20,34 @@ export class PavaruDezeTableComponent implements OnInit {
   pavaruDeze: PavaruDeze;
   pavaruDezeData: PavaruDeze[];
   show: boolean = false;
-  displayedColumns = [
-    'kaina',
-    'pavadinimas',
-    'gamintojas',
-    'tipas',
-    'veiksmai'
-  ];
+  
+  currentUser: string;
+  buyer: Buyer;
+  seller: Seller;
 
-  constructor(private pavaruDezeService: PavaruDezeService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private pavaruDezeService: PavaruDezeService, private dialog: MatDialog, private snackBar: MatSnackBar, private userService : UserService, private cart: CartService) { }
 
   ngOnInit(): void {
     this.getAndRefreshData();
+    this.getUser();
+  }
+
+  addToCart(box: PavaruDeze){
+    this.cart.addGearbox(box);
+  }
+
+  getUser(){
+    this.currentUser = this.userService.getUserType();
+    if(this.currentUser == 'Buyer'){
+      this.userService.getBuyer().subscribe(b => {
+        this.buyer = b;
+      });
+    }
+    else{
+      this.userService.getSeller().subscribe(s => {
+        this.seller = s;
+      });
+    }
   }
 
   public openCreatePavaruDezeDialog(): void {
