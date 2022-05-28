@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationService } from './../../services/confirmation.service';
 import { PavaruDeze } from './../../models/PavaruDeze';
 import { CartService } from './../../services/cart.service';
@@ -8,6 +9,7 @@ import { Engine } from 'src/app/models/Engine';
 import { Speaker } from 'src/app/models/Speaker';
 import { Hood } from 'src/app/models/Hood';
 import { Door } from 'src/app/models/Door';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -23,7 +25,9 @@ export class CartComponent implements OnInit {
   hoods: Hood[];
   doors: Door[];
 
-  constructor(private cart: CartService, private confirmService: ConfirmationService) {
+  total: number = 0;
+
+  constructor(private cart: CartService, private confirmService: ConfirmationService, private snackBar: MatSnackBar, private router: Router) {
     this.getData();
   }
 
@@ -35,6 +39,7 @@ export class CartComponent implements OnInit {
     this.speakers = this.cart.getSpeakers();
     this.hoods = this.cart.getHoods();
     this.doors = this.cart.getDoors();
+    this.total = this.cart.getTotalDiscounted();
   }
 
   ngOnInit(): void {
@@ -54,6 +59,8 @@ export class CartComponent implements OnInit {
   private doRemoveCar(car: Car){
     this.cart.removeCar(car);
     this.cars = this.cart.getCars();
+    this.total = this.cart.getTotalDiscounted();
+    this.snackBar.open('Prekė pašalinta', 'Gerai', {duration: 3000});
   }
 
   removeWheels(w: Wheels){
@@ -63,6 +70,8 @@ export class CartComponent implements OnInit {
   private doRemoveWheels(w: Wheels){
     this.cart.removeWheels(w);
     this.wheels = this.cart.getWheels();
+    this.total = this.cart.getTotalDiscounted();
+    this.snackBar.open('Prekė pašalinta', 'Gerai', {duration: 3000});
   }
 
   removeEngine(e: Engine){
@@ -72,6 +81,8 @@ export class CartComponent implements OnInit {
   private doRemoveEngine(e: Engine){
     this.cart.removeEngine(e);
     this.engines = this.cart.getEngines();
+    this.total = this.cart.getTotalDiscounted();
+    this.snackBar.open('Prekė pašalinta', 'Gerai', {duration: 3000});
   }
 
   removeGearbox(g: PavaruDeze){
@@ -81,6 +92,45 @@ export class CartComponent implements OnInit {
   private doRemoveGearbox(g: PavaruDeze){
     this.cart.removeGearbox(g);
     this.gearboxes = this.cart.getGearboxes();
+    this.total = this.cart.getTotalDiscounted();
+    this.snackBar.open('Prekė pašalinta', 'Gerai', {duration: 3000});
+  }
+
+  removeSpeakers(s: Speaker){
+    this.confirmService.confirm('Ar norite pašalinti prekę iš krepšelio?', () => this.doRemoveSpeakers(s));
+  }
+
+  private doRemoveSpeakers(s: Speaker){
+    this.cart.removeSpeakers(s);
+    this.speakers = this.cart.getSpeakers();
+    this.total = this.cart.getTotalDiscounted();
+    this.snackBar.open('Prekė pašalinta', 'Gerai', {duration: 3000});
+  }
+
+  removeHood(h: Hood){
+    this.confirmService.confirm('Ar norite pašalinti prekę iš krepšelio?', () => this.doRemoveHood(h));
+  }
+
+  private doRemoveHood(h: Hood){
+    this.cart.removeHood(h);
+    this.hoods = this.cart.getHoods();
+    this.total = this.cart.getTotalDiscounted();
+    this.snackBar.open('Prekė pašalinta', 'Gerai', {duration: 3000});
+  }
+
+  removeDoors(d: Door){
+    this.confirmService.confirm('Ar norite pašalinti prekę iš krepšelio?', () => this.doRemoveDoors(d));
+  }
+
+  private doRemoveDoors(d: Door){
+    this.cart.removeDoors(d);
+    this.doors = this.cart.getDoors();
+    this.total = this.cart.getTotalDiscounted();
+    this.snackBar.open('Prekė pašalinta', 'Gerai', {duration: 3000});
+  }
+
+  navigateToPayment(){
+    this.router.navigate(['/Moketi']);
   }
 
 }

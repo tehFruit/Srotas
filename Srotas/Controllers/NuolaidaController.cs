@@ -25,6 +25,28 @@ namespace Srotas.Controllers
             return Ok(nuolaidos);
         }
 
+        [HttpGet]
+        [Route("GetCode/{code}")]
+        public async Task<IActionResult> TaikytinaNuolaida([FromRoute] string code)
+        {
+            var nuolaida = await dbContext.Nuolaida.Where(x => x.ArPanaudota == false).Where(x => x.Kodas == code).FirstOrDefaultAsync();
+            if(nuolaida == null)
+            {
+                return NotFound();
+            }
+            return Ok(nuolaida);
+        }
+
+        [HttpPut]
+        [Route("SetUsed/{id}")]
+        public async Task<IActionResult> SetPanaudota([FromRoute] int id)
+        {
+            var nuolaida = await dbContext.Nuolaida.Where(x => x.Id == id).FirstOrDefaultAsync();
+            nuolaida.ArPanaudota = true;
+            await dbContext.SaveChangesAsync();
+            return Ok(nuolaida);
+        }
+
         //Get one Nuolaida by id
         [HttpGet]
         [Route("{id}")]

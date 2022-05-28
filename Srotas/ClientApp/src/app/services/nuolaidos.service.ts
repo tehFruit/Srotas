@@ -29,4 +29,12 @@ export class NuolaidaService {
   deleteNuolaida(id: number): Observable<Nuolaida> {
     return this.http.delete<Nuolaida>(this.baseURL + `/${id}`);
   }
+
+  getNuolaidaByCode(code: string) : Observable<Nuolaida>{
+    return this.http.get<Nuolaida>(this.baseURL + '/GetCode' + `/${code}`);
+  }
+
+  setUsed(id: number): Observable<Nuolaida>{
+    return this.http.put<Nuolaida>(this.baseURL + '/SetUsed' + `/${id}`, null);
+  }
 }

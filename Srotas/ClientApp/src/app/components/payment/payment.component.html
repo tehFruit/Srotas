@@ -1,0 +1,9 @@
+<div class="payment">
+    <h1>Mokėti už prekes</h1>
+    <p>Viso: {{total}}€</p>
+    <br>
+    <p>Įveskite nuolaidos kodą</p>
+    <input [(ngModel)]="code"><br>
+    <button mat-flat-button color="primary" (click)="applyCode()" style="margin-top: 15px;">Taikyti</button>
+    <p>{{code}}</p>
+</div>

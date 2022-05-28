@@ -44,6 +44,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import {MatListModule} from '@angular/material/list';
 import { PartListComponent } from './components/part-list/part-list.component';
 import { CartComponent } from './components/cart/cart.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -79,6 +81,7 @@ import { CartComponent } from './components/cart/cart.component';
     ConfirmationComponent,
     PartListComponent,
     CartComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -96,7 +99,8 @@ import { CartComponent } from './components/cart/cart.component';
       { path: 'Durys', component: DoorTableComponent, pathMatch: 'full' },
       { path: 'Automobiliai', component: CarTableComponent, pathMatch: 'full'},
       { path: 'Dalys', component: PartListComponent, pathMatch: 'full'},
-      { path: 'Krepselis', component: CartComponent, pathMatch: 'full' }
+      { path: 'Krepselis', component: CartComponent, pathMatch: 'full' },
+      { path: 'Moketi', component: PaymentComponent, pathMatch: 'full'}
     ]),
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -108,7 +112,8 @@ import { CartComponent } from './components/cart/cart.component';
     MatSelectModule,
     MatInputModule,
     MatCommonModule,
-    MatListModule
+    MatListModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

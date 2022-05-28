@@ -66,6 +66,49 @@
     <div class="item" *ngFor="let s of speakers">
         <div class="properties">
             <p>{{s.pavadinimas}}</p>
+            <p>Gamintojas: {{s.gamintojas}}</p>
+            <p>Skersmuo: {{s.skersmuo}}mm</p>
+            <p><b>Kaina: {{s.kaina}}</b></p>
+        </div>
+        <div class="delete">
+            <button mat-icon-button (click)="removeSpeakers(s)" >
+                <mat-icon>close</mat-icon>
+              </button>
+        </div>
+    </div>
+
+    <h3><b>Kapotai</b></h3>
+    <div class="item" *ngFor="let h of hoods">
+        <div class="properties">
+            <p>{{h.pavadinimas}}</p>
+            <p>Gamintojas: {{h.gamintojas}}</p>
+            <p>Parametrai: {{h.modelis}} {{h.pagaminimoMetai}} {{h.spalva}}</p>
+            <p><b>Kaina: {{h.kaina}}</b></p>
+        </div>
+        <div class="delete">
+            <button mat-icon-button (click)="removeHood(h)" >
+                <mat-icon>close</mat-icon>
+              </button>
+        </div>
+    </div>
+
+    <h3><b>Durys</b></h3>
+    <div class="item" *ngFor="let d of doors">
+        <div class="properties">
+            <p>{{d.pavadinimas}}</p>
+            <p>Gamintojas: {{d.gamintojas}}</p>
+            <p>Parametrai: {{d.modelis}} {{d.pagaminimoMetai}} {{d.spalva}}</p>
+            <p><b>Kaina: {{d.kaina}}</b></p>
+        </div>
+        <div class="delete">
+            <button mat-icon-button (click)="removeDoors(d)" >
+                <mat-icon>close</mat-icon>
+              </button>
         </div>
     </div>
 </div>
+
+<span>
+    <h2 style="padding: 15px;">Viso: {{total}}€</h2>
+    <button mat-flat-button color="primary" [disabled]="total == 0" (click)="navigateToPayment()">Mokėti</button>
+</span>
