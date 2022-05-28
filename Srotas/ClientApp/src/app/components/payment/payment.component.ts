@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
   buyer: Buyer;
   total: number = 0;
   code: string = '';
+  paymentMethod = 'Balansu';
   
   constructor(private cart: CartService, private userService: UserService, private nuolaidaService: NuolaidaService, private snackBar: MatSnackBar) { }
 
@@ -39,6 +40,10 @@ export class PaymentComponent implements OnInit {
       notFound => {
         this.snackBar.open('Kodas negalioja', 'Gerai', {duration: 3000});
     });
+  }
+
+  pay(){
+    
   }
 
 }
