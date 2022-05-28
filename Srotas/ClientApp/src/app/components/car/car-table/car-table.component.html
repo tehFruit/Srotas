@@ -22,37 +22,37 @@
 
       <ng-container *ngIf="suggestions">
         <p>Dalių pasiūlymai</p>
-      <div class="part" *ngIf="!w.turiRatus">
+      <div class="part" *ngIf="!w.turiRatus && wheels[i].suggestedWheels != null">
         <p><b>Ratai</b></p>
         <p>{{wheels[i].suggestedWheels.pavadinimas}}</p>
         <p>Dydis: {{wheels[i].suggestedWheels.dydis}}</p>
         <p>Plotis: {{wheels[i].suggestedWheels.plotis}}</p>
       </div>
 
-      <div class="part" *ngIf="!w.turiVarikli">
+      <div class="part" *ngIf="!w.turiVarikli && engines[i].suggestedEngine != null">
         <p><b>Variklis</b></p>
         <p>{{engines[i].suggestedEngine.pavadinimas}}</p>
         <p>Tūris: {{engines[i].suggestedEngine.turis}}</p>
         <p>Kuro tipas: {{engines[i].suggestedEngine.kuroTipas}}</p>
       </div>
 
-      <div class="part" *ngIf="!w.turiPavaruDeze">
+      <div class="part" *ngIf="!w.turiPavaruDeze && gearboxes[i].suggestedGearbox != null">
         <p><b>Pavarų dėžė</b></p>
         <p>{{gearboxes[i].suggestedGearbox.pavadinimas}}</p>
         <p>Tipas: {{gearboxes[i].suggestedGearbox.tipas}}</p>
       </div>
 
-      <div class="part" *ngIf="!w.turiKoloneles">
+      <div class="part" *ngIf="!w.turiKoloneles && speakers[i].suggestedSpeakers != null">
         <p><b>Kolonėlės</b></p>
         <p>{{speakers[i].suggestedSpeakers.pavadinimas}}</p>
       </div>
 
-      <div class="part" *ngIf="!w.turiKapota">
+      <div class="part" *ngIf="!w.turiKapota && hoods[i].suggestedHood != null">
         <p><b>Kapotas</b></p>
         <p>{{hoods[i].suggestedHood.pavadinimas}}</p>
       </div>
 
-      <div class="part" *ngIf="!w.turiDuris">
+      <div class="part" *ngIf="!w.turiDuris && doors[i].suggestedDoors != null">
         <p><b>Durys</b></p>
         <p>{{doors[i].suggestedDoors.pavadinimas}}</p>
       </div>
