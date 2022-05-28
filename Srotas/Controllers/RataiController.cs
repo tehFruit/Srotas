@@ -21,7 +21,7 @@ namespace Srotas.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllWheels()
         {
-            var wheels = await dbContext.Ratai.ToListAsync();
+            var wheels = await dbContext.Ratai.Where(x => x.Parduotas == false).ToListAsync();
             return Ok(wheels);
         }
 
@@ -29,7 +29,7 @@ namespace Srotas.Controllers
         [Route("GetSpecific/{dydis}/{plotis}")]
         public async Task<IActionResult> GetSpecWheels([FromRoute] string dydis, [FromRoute] int plotis)
         {
-            var wheels = await dbContext.Ratai.Where(x => x.Dydis == dydis).Where(x => x.Plotis == plotis).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
+            var wheels = await dbContext.Ratai.Where(x => x.Parduotas == false).Where(x => x.Dydis == dydis).Where(x => x.Plotis == plotis).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
             if(wheels == null)
             {
                 return NotFound("Nėra tinkamų ratų");

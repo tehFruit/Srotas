@@ -1,8 +1,8 @@
 export class Order {
     id: number;
     kodas: string;
-    pristatymoData: Date;
+    pristatymoData: string;
     suma: number;
-    ivertinimas: number | undefined;
+    ivertinimas: number | undefined | null;
     pirkejasId: number;
 }

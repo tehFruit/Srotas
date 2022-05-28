@@ -33,8 +33,8 @@ namespace Srotas.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateBuyer")]
-        public async Task<IActionResult> UpdateBuyer([FromBody] int balance)
+        [Route("UpdateBuyer/{balance}")]
+        public async Task<IActionResult> UpdateBuyer([FromRoute] int balance)
         {
             var buyer = dbContext.Pirkejas.FirstOrDefault();
             buyer.Balansas = balance;

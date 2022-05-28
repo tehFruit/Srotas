@@ -26,14 +26,14 @@ namespace Srotas.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Koloneles>>> GetKoloneles()
         {
-            return await _context.Koloneles.ToListAsync();
+            return await _context.Koloneles.Where(x => x.Parduotas == false).ToListAsync();
         }
 
         [HttpGet]
         [Route("GetSpecific/{skersmuo}")]
         public async Task<ActionResult<Koloneles>> GetSpecKoloneles([FromRoute] int skersmuo)
         {
-            var koloneles = await _context.Koloneles.Where(x => x.Skersmuo == skersmuo).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
+            var koloneles = await _context.Koloneles.Where(x => x.Parduotas == false).Where(x => x.Skersmuo == skersmuo).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
             if(koloneles == null)
             {
                 return NotFound("Nėra tinkamų kolonėių");

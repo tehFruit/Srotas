@@ -21,7 +21,7 @@ namespace Srotas.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPavaruDezes()
         {
-            var pavaruDezes = await dbContext.PavaruDeze.ToListAsync();
+            var pavaruDezes = await dbContext.PavaruDeze.Where(x => x.Parduotas == false).ToListAsync();
             return Ok(pavaruDezes);
         }
 
@@ -29,7 +29,7 @@ namespace Srotas.Controllers
         [Route("GetSpecific/{gamintojas}/{tipas}")]
         public async Task<IActionResult> GetSpecGearbox([FromRoute] string gamintojas, [FromRoute] string tipas)
         {
-            var gearbox = await dbContext.PavaruDeze.Where(x => x.Gamintojas == gamintojas).Where(x => x.Tipas == tipas).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
+            var gearbox = await dbContext.PavaruDeze.Where(x => x.Parduotas == false).Where(x => x.Gamintojas == gamintojas).Where(x => x.Tipas == tipas).OrderBy(x => x.Kaina).FirstOrDefaultAsync();
             if (gearbox == null)
             {
                 return NotFound("Nėra tinkamos pavarų dėžės");

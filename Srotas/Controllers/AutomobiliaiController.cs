@@ -20,7 +20,7 @@ namespace Srotas.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllCars()
         {
-            var cars = await dbContext.AutomobilioSkelbimas.ToListAsync();
+            var cars = await dbContext.AutomobilioSkelbimas.Where(x => x.Parduotas == false).ToListAsync();
             return Ok(cars);
         }
 

@@ -29,6 +29,6 @@ export class UserService {
   }
 
   public UpdateBuyerBalance(balance: number) : Observable<Buyer>{
-    return this.http.put<Buyer>(this.baseUrl + '/UpdateBuyer', balance);
+    return this.http.put<Buyer>(this.baseUrl + '/UpdateBuyer' + `/${balance}`, null);
   }
 }

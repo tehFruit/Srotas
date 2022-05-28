@@ -26,14 +26,14 @@ namespace Srotas.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Durys>>> GetDurys()
         {
-            return await _context.Durys.ToListAsync();
+            return await _context.Durys.Where(x => x.Parduotas == false ).ToListAsync();
         }
 
         [HttpGet]
         [Route("GetSpecific/{gamintojas}/{modelis}/{metai}/{spalva}")]
         public async Task<ActionResult<Durys>> GetSpecDurys([FromRoute] string gamintojas, [FromRoute] string modelis, [FromRoute] int metai, [FromRoute] string spalva)
         {
-            var doors = await _context.Durys.Where(x => x.Gamintojas == gamintojas)
+            var doors = await _context.Durys.Where(x => x.Gamintojas == gamintojas).Where(x => x.Parduotas == false)
                                       .Where(x => x.Modelis == modelis)
                                       .Where(x => x.PagaminimoMetai == metai)
                                       .Where(x => x.Spalva == spalva).FirstOrDefaultAsync();

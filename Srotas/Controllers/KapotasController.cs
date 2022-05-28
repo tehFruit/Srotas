@@ -26,14 +26,14 @@ namespace Srotas.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Kapotas>>> GetKapotas()
         {
-            return await _context.Kapotas.ToListAsync();
+            return await _context.Kapotas.Where(x => x.Parduotas == false).ToListAsync();
         }
 
         [HttpGet]
         [Route("GetSpecific/{gamintojas}/{modelis}/{metai}/{spalva}")]
         public async Task<ActionResult<Kapotas>> GetSpecKapotas([FromRoute] string gamintojas, [FromRoute] string modelis, [FromRoute] int metai, [FromRoute] string spalva)
         {
-            var kapotas = await _context.Kapotas.Where(x => x.Gamintojas == gamintojas)
+            var kapotas = await _context.Kapotas.Where(x => x.Gamintojas == gamintojas).Where(x => x.Parduotas == false)
                                                 .Where(x => x.Modelis == modelis)
                                                 .Where(x => x.PagaminimoMetai == metai)
                                                 .Where(x => x.Spalva == spalva).FirstOrDefaultAsync();
