@@ -25,7 +25,7 @@ export class UserService {
   }
 
   public UpdateSellerRating(rating: number) : Observable<Seller>{
-    return this.http.put<Seller>(this.baseUrl + '/UpdateSeller', rating);
+    return this.http.put<Seller>(this.baseUrl + '/UpdateSeller' + `/${rating}`, null);
   }
 
   public UpdateBuyerBalance(balance: number) : Observable<Buyer>{

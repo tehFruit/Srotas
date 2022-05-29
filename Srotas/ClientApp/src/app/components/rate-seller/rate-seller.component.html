@@ -1,0 +1,14 @@
+<div class="rating">
+    <h1>Vertinti pardavėją</h1>
+
+    <p>Pasirinkite vertinimą</p>
+    <mat-radio-group [(ngModel)]="ratingStr" class="example-radio-group">
+        <mat-radio-button class="example-radio-button" value="-2">-2</mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="-1">-1</mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="0">0</mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="1">1</mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="2">2</mat-radio-button>
+    </mat-radio-group>
+    
+    <button mat-flat-button color="primary" (click)="rate()" style="margin-top: 15px;">Patvirtinti</button>
+</div>

@@ -46,6 +46,7 @@ import { PartListComponent } from './components/part-list/part-list.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { RateSellerComponent } from './components/rate-seller/rate-seller.component';
 
 
 
@@ -82,6 +83,7 @@ import {MatRadioModule} from '@angular/material/radio';
     PartListComponent,
     CartComponent,
     PaymentComponent,
+    RateSellerComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -100,7 +102,8 @@ import {MatRadioModule} from '@angular/material/radio';
       { path: 'Automobiliai', component: CarTableComponent, pathMatch: 'full'},
       { path: 'Dalys', component: PartListComponent, pathMatch: 'full'},
       { path: 'Krepselis', component: CartComponent, pathMatch: 'full' },
-      { path: 'Moketi', component: PaymentComponent, pathMatch: 'full'}
+      { path: 'Moketi', component: PaymentComponent, pathMatch: 'full'},
+      { path: 'Vertinti', component: RateSellerComponent, pathMatch: 'full'}
     ]),
     BrowserAnimationsModule,
     MatFormFieldModule,

@@ -43,8 +43,8 @@ namespace Srotas.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateSeller")]
-        public async Task<IActionResult> UpdateSeller([FromBody] int rating)
+        [Route("UpdateSeller/{rating}")]
+        public async Task<IActionResult> UpdateSeller([FromRoute] int rating)
         {
             var seller = dbContext.Pardavejas.FirstOrDefault();
             seller.Reitingas = rating;
